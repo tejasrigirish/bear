@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 56" width="100%" height="100%">
+  <defs>
+    <filter id="ily-shadow" x="-10%" y="-15%" width="125%" height="140%">
+      <feDropShadow dx="1" dy="2.5" stdDeviation="2" flood-color="#2c1a10" flood-opacity="0.24"/>
+    </filter>
+  </defs>
+  <g filter="url(#ily-shadow)">
+    <!-- White die cut cloud bubble -->
+    <path d="M20 10 C10 10 4 18 4 28 C4 38 12 46 22 46 L128 46 C138 46 146 38 146 28 C146 18 138 10 128 10 Z" fill="#ffffff" stroke="#f3ebe0" stroke-width="4" stroke-linejoin="round"/>
+    <!-- Inner soft cream background -->
+    <path d="M22 13 C14 13 8 20 8 28 C8 36 14 43 22 43 L128 43 C136 43 142 36 142 28 C142 20 136 13 128 13 Z" fill="#fbf7f1"/>
+    <!-- Deep burgundy / wine cursive script -->
+    <text x="70" y="34" font-family="'Caveat', cursive" font-weight="700" font-size="25" fill="#8c2e23" text-anchor="middle">i love you</text>
+    <!-- Tiny hearts accents -->
+    <path d="M124 23 Q121 20 118 22 Q115 25 124 32 Q133 25 130 22 Q127 20 124 23 Z" fill="#c64738"/>
+    <path d="M18 25 Q16 23 14 24.5 Q12 27 18 32 Q24 27 22 24.5 Q20 23 18 25 Z" fill="#e08479"/>
+  </g>
+</svg>

@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>For Bear 🧸 | Happy Boyfriend's Day</title>
+  <meta name="description" content="A cozy handmade digital scrapbook journal made with love for Abhishek (Bear).">
+  
+  <!-- Modern Romantic & Handwritten Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Nunito:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Reenie+Beanie&display=swap" rel="stylesheet">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧸</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Star Trail Canvas for Desktop Cursor -->
+  <canvas id="sparkle-canvas"></canvas>
+
+  <!-- Scrapbook Desk Top Controls & Scrapbook Heart Progress System -->
+  <header class="scrapbook-top-bar" aria-label="Controls">
+    <div class="top-controls-left">
+      <button id="sound-btn" class="scrapbook-pin-btn" aria-label="Toggle interaction sound effects" title="Toggle cute sounds">
+        <span class="pin-icon" id="sound-icon">🔔</span>
+        <span class="pin-text">sound: <strong id="sound-state">on</strong></span>
+      </button>
+      <button id="customize-photos-btn" class="scrapbook-pin-btn" aria-label="Personalize photos" title="Add our real photos">
+        <span class="pin-icon">📷</span>
+        <span class="pin-text">our photos</span>
+      </button>
+    </div>
+
+    <!-- Chapter Progress Tracker: Handmade Scrapbook Hearts ♡ ♡ ♡ ♡ ♡ -->
+    <nav class="chapter-hearts-tracker" aria-label="Chapter progress">
+      <div class="tracker-scrapbook-tag">
+        <span class="tracker-pin">📌</span>
+        <span class="tracker-label handwriting">our story:</span>
+        <div class="hearts-list" role="tablist">
+          <button class="heart-chapter-btn active" data-chapter="0" title="Opening: Hey Bear" role="tab" aria-selected="true">
+            <span class="heart-icon">♥</span>
+            <span class="heart-tooltip">Cover</span>
+          </button>
+          <button class="heart-chapter-btn" data-chapter="1" title="Chapter 1: The Polaroid" role="tab" aria-selected="false">
+            <span class="heart-icon">♡</span>
+            <span class="heart-tooltip">Ch. 1</span>
+          </button>
+          <button class="heart-chapter-btn" data-chapter="2" title="Chapter 2: Little Memories" role="tab" aria-selected="false">
+            <span class="heart-icon">♡</span>
+            <span class="heart-tooltip">Ch. 2</span>
+          </button>
+          <button class="heart-chapter-btn" data-chapter="3" title="Chapter 3: Find the Hearts" role="tab" aria-selected="false">
+            <span class="heart-icon">♡</span>
+            <span class="heart-tooltip">Ch. 3</span>
+          </button>
+          <button class="heart-chapter-btn" data-chapter="4" title="Chapter 4: Little Things I Love" role="tab" aria-selected="false">
+            <span class="heart-icon">♡</span>
+            <span class="heart-tooltip">Ch. 4</span>
+          </button>
+          <button class="heart-chapter-btn" data-chapter="5" title="Chapter 5: For Bear Only" role="tab" aria-selected="false">
+            <span class="heart-icon">♡</span>
+            <span class="heart-tooltip">Secret</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Scrapbook Desk Environment -->
+  <main class="desk-container">
+    <div class="scrapbook-wrapper" id="scrapbook-wrapper">
+
+      <!-- ================= CHAPTER 0: COVER / OPENING SCREEN ================= -->
+      <section class="scrapbook-page page-active" id="page-0" data-page-index="0" aria-label="Cover Page">
+        <div class="page-paper cover-page-paper">
+          <!-- Scrapbook aesthetic textures, washi tape & stickers -->
+          <div class="washi-tape tape-top-left tape-plaid" aria-hidden="true"></div>
+          <div class="washi-tape tape-top-right tape-gingham" aria-hidden="true"></div>
+          
+          <!-- Subtle Opening Stickers from assets -->
+          <div class="opening-sticker-item sticker-bow-pos" aria-hidden="true">
+            <img src="assets/stickers/red-bow.svg" alt="Red Bow sticker" class="scrapbook-sticker-asset sticker-scale-sm">
+          </div>
+          <div class="opening-sticker-item sticker-stars-pos" aria-hidden="true">
+            <img src="assets/stickers/stars-cluster.svg" alt="Stars sticker" class="scrapbook-sticker-asset sticker-scale-sm">
+          </div>
+          <div class="opening-sticker-item sticker-heart-pos" aria-hidden="true">
+            <img src="assets/stickers/red-heart.svg" alt="Heart sticker" class="scrapbook-sticker-asset sticker-scale-xs">
+          </div>
+          <div class="opening-sticker-item sticker-teddy-pos wiggle-hover" aria-hidden="true">
+            <img src="assets/stickers/teddy-bear.svg" alt="Teddy sticker" class="scrapbook-sticker-asset sticker-scale-md">
+          </div>
+
+          <!-- Vintage Postal Stamp -->
+          <div class="post-stamp stamp-top-right" aria-hidden="true">
+            <span class="stamp-inner">BEAR'S DAY • 10/01</span>
+          </div>
+
+          <!-- Peeking Polaroid on cover -->
+          <div class="peeking-polaroid" aria-hidden="true">
+            <div class="peeking-photo-frame">
+              <div class="photo-inner" data-photo-id="MAIN_COUPLE_PHOTO">
+                <img src="assets/photos/photo1.jpg" alt="Our Polaroid" class="polaroid-real-img" style="object-position: center 30%;">
+              </div>
+            </div>
+            <span class="peeking-label">us ♡</span>
+          </div>
+
+          <div class="cover-content">
+            <div class="cute-badge wiggle-hover">
+              <span class="badge-icon">🧸</span>
+              <span class="badge-text">a cozy little journal</span>
+            </div>
+
+            <h1 class="cover-title">
+              <span class="greeting-pre">hey</span>
+              <span class="greeting-bear">BEAR</span>
+              <span class="bear-emoji animate-bob">🧸</span>
+            </h1>
+
+            <p class="cover-subtitle handwriting">
+              “I made something for you...”
+            </p>
+
+            <div class="cover-doodles" aria-hidden="true">
+              <span class="doodle star-doodle-1">✦</span>
+              <span class="doodle star-doodle-2">⋆</span>
+              <span class="doodle heart-doodle">♡</span>
+              <span class="doodle sparkle-doodle">✨</span>
+            </div>
+
+            <!-- The Opening Button: Exact required text "OPEN IT ♡" -->
+            <button id="open-journal-btn" class="scrapbook-action-btn pulse-glow" aria-label="Open it for Bear">
+              <span class="btn-ribbon"></span>
+              <span class="btn-text">OPEN IT ♡</span>
+            </button>
+          </div>
+
+          <!-- Bottom washi tape & handwritten teaser -->
+          <div class="washi-tape tape-bottom-center tape-kraft" aria-hidden="true"></div>
+          <div class="corner-doodle bottom-left-doodle handwriting" aria-hidden="true">
+            tap open bearuuu ⇣
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CHAPTER 1: OUR POLAROID ================= -->
+      <section class="scrapbook-page page-hidden" id="page-1" data-page-index="1" aria-label="Chapter 1: Our Polaroid">
+        <div class="page-paper chapter-1-paper">
+          <div class="page-header-decor">
+            <span class="chapter-number-pill">Chapter 1 of 5</span>
+            <span class="chapter-title-script handwriting">the polaroid on my desk...</span>
+          </div>
+
+          <div class="washi-tape tape-top-right tape-dots" aria-hidden="true"></div>
+
+          <!-- Physical Polaroid Card (3D Flip Interaction) -->
+          <div class="polaroid-scene" id="chapter-1-polaroid-scene">
+            <div class="polaroid-card" id="main-polaroid-card" tabindex="0" role="button" aria-pressed="false" aria-label="Click to flip polaroid and read secret message">
+              
+              <!-- Front Side of Polaroid -->
+              <div class="polaroid-face polaroid-front">
+                <div class="washi-tape polaroid-tape tape-kraft" aria-hidden="true"></div>
+                <div class="polaroid-photo-box" id="main-photo-box">
+                  <div class="photo-display" data-photo-id="MAIN_COUPLE_PHOTO">
+                    <img src="assets/photos/photo1.jpg" alt="Our favorite couple Polaroid" class="polaroid-real-img" style="object-position: center 30%;">
+                  </div>
+                </div>
+                <div class="polaroid-caption">
+                  <p class="caption-handwritten handwriting">my favorite person ♡</p>
+                  <span class="click-hint-badge">tap to flip me ↻</span>
+                </div>
+              </div>
+
+              <!-- Back Side of Polaroid -->
+              <div class="polaroid-face polaroid-back">
+                <div class="washi-tape polaroid-tape tape-gingham" aria-hidden="true"></div>
+                <div class="back-card-content">
+                  <div class="card-stamp-mark" aria-hidden="true">📮</div>
+                  <div class="card-date handwriting">october • forever & always</div>
+                  <div class="typewriter-container">
+                    <p class="typewriter-text handwriting" id="polaroid-message-text" aria-live="polite">
+                      <!-- Typed via JS -->
+                    </p>
+                    <span class="typewriter-cursor" aria-hidden="true">|</span>
+                  </div>
+                  <div class="back-footer-decor">
+                    <span class="stamp-heart" id="polaroid-finish-heart" aria-hidden="true">♡</span>
+                    <img src="assets/stickers/teddy-bear.svg" alt="Little teddy" class="inline-sticker-stamp">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Stickers strategically placed around Polaroid (as requested in Section 7) -->
+          <!-- 1. "Favorite person" sticker -->
+          <div class="ch1-decor-sticker pos-favorite-person wiggle-click" title="Favorite person" role="button" tabindex="0">
+            <img src="assets/stickers/favorite-person.svg" alt="Favorite Person sticker" class="scrapbook-sticker-asset">
+          </div>
+
+          <!-- 2. Red Heart sticker -->
+          <div class="ch1-decor-sticker pos-red-heart wiggle-click" title="Red Heart" role="button" tabindex="0">
+            <img src="assets/stickers/red-heart.svg" alt="Red Heart sticker" class="scrapbook-sticker-asset sticker-scale-sm">
+          </div>
+
+          <!-- 3. Small Bow sticker -->
+          <div class="ch1-decor-sticker pos-bow wiggle-click" title="Pretty Bow" role="button" tabindex="0">
+            <img src="assets/stickers/pink-bow.svg" alt="Pink Bow sticker" class="scrapbook-sticker-asset sticker-scale-sm">
+          </div>
+
+          <!-- 4. "you're mine" sticker -->
+          <div class="ch1-decor-sticker pos-youre-mine wiggle-click" title="You're Mine" role="button" tabindex="0">
+            <img src="assets/stickers/youre-mine.svg" alt="You're Mine sticker" class="scrapbook-sticker-asset">
+          </div>
+
+          <!-- 5. Tiny stars cluster sticker -->
+          <div class="ch1-decor-sticker pos-stars" aria-hidden="true">
+            <img src="assets/stickers/stars-cluster.svg" alt="Stars cluster" class="scrapbook-sticker-asset sticker-scale-xs">
+          </div>
+
+          <!-- 6. Small Teddy sticker -->
+          <div class="ch1-decor-sticker pos-teddy wiggle-click" title="Nan muddu bearuuu" role="button" tabindex="0">
+            <img src="assets/stickers/teddy-bear.svg" alt="Teddy bear sticker" class="scrapbook-sticker-asset sticker-scale-sm">
+          </div>
+
+          <!-- Page Navigation to Chapter 2 (Enabled after flip & typing) -->
+          <div class="page-navigation-area" id="page-1-nav" style="opacity: 0.2; pointer-events: none;">
+            <p class="nav-hint-text handwriting">turn the page for our memories ⇣</p>
+            <button class="scrapbook-next-btn" data-next-to="2" aria-label="Next Chapter: Little Memories">
+              <span>Next Page: Our Little Memories</span>
+              <span class="arrow-icon">➔</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CHAPTER 2: OUR LITTLE MEMORIES ================= -->
+      <section class="scrapbook-page page-hidden" id="page-2" data-page-index="2" aria-label="Chapter 2: Little Memories">
+        <div class="page-paper chapter-2-paper">
+          <div class="page-header-decor">
+            <span class="chapter-number-pill">Chapter 2 of 5</span>
+            <h2 class="chapter-title-script handwriting">our little memories & sweet moments</h2>
+          </div>
+
+          <p class="section-instruction handwriting">
+            *tap any photograph to enlarge, or tap stickers & envelopes for little hidden secrets*
+          </p>
+
+          <!-- Authentic Asymmetrical Scrapbook Composition (Photos 2, 3, and 4) -->
+          <div class="scrapbook-asymmetric-layout">
+            
+            <!-- PHOTO 3: COUPLE PORTRAIT (Larger memory photograph with torn paper, flower, bow, stars) -->
+            <article class="scrapbook-photo-item photo-couple-portrait collage-item collage-item-portrait" tabindex="0" role="button" aria-label="Couple portrait: you always complete me">
+              <div class="washi-tape tape-item tape-plaid" aria-hidden="true"></div>
+              <div class="torn-paper-edge" aria-hidden="true"></div>
+              <div class="collage-photo-frame frame-portrait" data-modal-target="photo-3">
+                <div class="photo-display" data-photo-id="PHOTO_3">
+                  <img src="assets/photos/photo3.jpg" alt="Couple portrait" class="polaroid-real-img" style="object-position: center 25%;">
+                </div>
+              </div>
+              <div class="photo-decor-stickers" aria-hidden="true">
+                <img src="assets/stickers/pressed-flowers.svg" alt="Flower sticker" class="photo-mini-sticker mini-flower">
+                <img src="assets/stickers/pink-bow.svg" alt="Bow sticker" class="photo-mini-sticker mini-bow">
+                <img src="assets/stickers/stars-cluster.svg" alt="Stars cluster" class="photo-mini-sticker mini-stars">
+              </div>
+              <div class="collage-caption handwriting">you always complete me ♡</div>
+            </article>
+
+            <!-- PHOTO 2: CLOSE-UP COUPLE PHOTO (Small intimate scrapbook photograph tucked & slightly overlapping) -->
+            <article class="scrapbook-photo-item photo-intimate-closeup" id="photo-2-intimate" tabindex="0" role="button" aria-label="Intimate close-up photograph">
+              <div class="washi-tape tape-item tape-kraft" aria-hidden="true"></div>
+              <div class="collage-photo-frame frame-closeup">
+                <div class="photo-display" data-photo-id="PHOTO_2">
+                  <img src="assets/photos/photo2.jpg" alt="Close-up couple memory" class="polaroid-real-img" style="object-position: center 40%;">
+                </div>
+              </div>
+              <div class="photo-decor-stickers" aria-hidden="true">
+                <img src="assets/stickers/red-bow.svg" alt="Tiny bow" class="photo-mini-sticker mini-bow-c2">
+                <img src="assets/stickers/red-heart.svg" alt="Tiny heart" class="photo-mini-sticker mini-heart-c2">
+              </div>
+              <div class="collage-caption handwriting">my maooo 🧸</div>
+              <div class="tucked-label-badge">tucked note ⇣</div>
+            </article>
+
+            <!-- PHOTO 4: BLACK & WHITE MEMORY (Old printed photograph with worn paper border, tape, handwritten note) -->
+            <article class="scrapbook-photo-item photo-bw-memory collage-item collage-item-bw" id="photo-4-bw" tabindex="0" role="button" aria-label="Black and white memory: one of my little favorites">
+              <div class="washi-tape tape-item tape-dots tape-long" aria-hidden="true"></div>
+              <div class="worn-paper-border">
+                <div class="collage-photo-frame frame-bw" data-modal-target="photo-4">
+                  <div class="photo-display" data-photo-id="PHOTO_4">
+                    <img src="assets/photos/photo4.jpg" alt="Black and white couple memory" class="polaroid-real-img bw-photo" style="object-position: center 35%;">
+                  </div>
+                </div>
+              </div>
+              <div class="collage-caption handwriting">one of my little favorites</div>
+              <div class="handwritten-taped-note handwriting">missing you always nan bear maaa ⇣</div>
+            </article>
+
+            <!-- Overlapping Stickers & Interactive Objects (Camera, Flowers, Ribbons, Envelope, Cute Cat) -->
+            <!-- Vintage Camera Sticker -->
+            <div class="ch2-sticker-decor sticker-cam-overlap wiggle-click" data-toast="“Snap! Capturing every sweet moment with Bear 📷✨”" role="button" tabindex="0" title="Vintage Camera">
+              <img src="assets/stickers/vintage-camera.svg" alt="Vintage camera sticker" class="scrapbook-sticker-asset sticker-scale-md">
+            </div>
+
+            <!-- Pressed Flowers Sticker -->
+            <div class="ch2-sticker-decor sticker-flower-overlap wiggle-click" data-toast="“Pressed wild daisies... delicate like our love 🌸”" role="button" tabindex="0" title="Pressed Flowers">
+              <img src="assets/stickers/pressed-flowers.svg" alt="Pressed flowers sticker" class="scrapbook-sticker-asset sticker-scale-md">
+            </div>
+
+            <!-- Cute Cat Sticker -->
+            <div class="ch2-sticker-decor sticker-cat-overlap wiggle-click" data-toast="“Maooo maooo sweetie! Purring with love 🐾”" role="button" tabindex="0" title="Sleeping Kitten">
+              <img src="assets/stickers/cute-cat.svg" alt="Sleeping cat sticker" class="scrapbook-sticker-asset sticker-scale-md">
+            </div>
+
+            <!-- Decorative Vintage Ribbon Strip -->
+            <div class="ch2-sticker-decor sticker-ribbon-overlap" aria-hidden="true">
+              <img src="assets/stickers/ribbon-strip.svg" alt="Ribbon strip" class="scrapbook-sticker-asset">
+            </div>
+
+            <!-- Interactive Envelope (Click to open secret mini note!) -->
+            <div class="ch2-interactive-envelope wiggle-hover" id="ch2-envelope-trigger" role="button" tabindex="0" aria-label="Open mini love letter">
+              <img src="assets/stickers/vintage-envelope.svg" alt="Vintage envelope sticker" class="scrapbook-sticker-asset sticker-scale-md">
+              <span class="envelope-peek-label handwriting">tap to open letter ✉️</span>
+            </div>
+
+            <!-- Interactive Bow with note -->
+            <div class="ch2-interactive-bow wiggle-hover trinket-interactive" data-toast="“Every tiny second with Bear is my favourite memory 🎀”" role="button" tabindex="0" aria-label="Ribbon note">
+              <img src="assets/stickers/red-bow.svg" alt="Red ribbon bow sticker" class="scrapbook-sticker-asset sticker-scale-sm">
+              <span class="trinket-label handwriting">pull ribbon</span>
+            </div>
+
+          </div>
+
+          <!-- Bottom Navigation to Chapter 3 -->
+          <div class="page-navigation-area">
+            <button class="scrapbook-next-btn" data-next-to="3" aria-label="Next Chapter: Find the Hearts">
+              <span>Next Page: Find the Hearts</span>
+              <span class="arrow-icon">➔</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CHAPTER 3: FIND THE HEARTS ================= -->
+      <section class="scrapbook-page page-hidden" id="page-3" data-page-index="3" aria-label="Chapter 3: Find the Hearts">
+        <div class="page-paper chapter-3-paper">
+          <div class="page-header-decor">
+            <span class="chapter-number-pill">Chapter 3 of 5</span>
+            <h2 class="chapter-title-script handwriting">find the hearts 🔍♡</h2>
+          </div>
+
+          <!-- Handwritten Scrapbook Counter Card -->
+          <div class="heart-counter-card">
+            <div class="counter-header">
+              <span class="counter-title handwriting">Bear's Heart Stash:</span>
+              <div class="counter-badge" id="hearts-counter-display">
+                <span class="counter-hearts-icon">♡</span>
+                <span class="counter-text handwriting" id="collected-hearts-text">0 / 5</span>
+              </div>
+            </div>
+            <p class="counter-hint handwriting" id="heart-hunt-hint">
+              *find the 5 tiny hearts tucked into the snapshot, letter envelope, chai cup, flowers & bear doodle!*
+            </p>
+          </div>
+
+          <!-- The Playful Scavenger Board inside the journal page -->
+          <div class="scavenger-journal-board" id="scavenger-board">
+            
+            <!-- PHOTO 5: FUN COUPLE PLAYFUL SNAPSHOT (Slightly tilted, surrounded by star, bow, heart, camera) -->
+            <div class="board-element board-fun-photo wiggle-hover" id="photo-5-item" tabindex="0" role="button" aria-label="Playful memory snapshot: maooo sweetie">
+              <div class="washi-tape tape-item tape-plaid" aria-hidden="true"></div>
+              <div class="playful-snapshot-frame">
+                <div class="photo-display" data-photo-id="PHOTO_5">
+                  <img src="assets/photos/photo5.jpg" alt="Maooo sweetie playful memory" class="polaroid-real-img" style="object-position: center 25%;">
+                </div>
+              </div>
+              <div class="playful-decorations" aria-hidden="true">
+                <img src="assets/stickers/stars-cluster.svg" alt="Stars" class="playful-sticker sticker-playful-stars">
+                <img src="assets/stickers/pink-bow.svg" alt="Bow" class="playful-sticker sticker-playful-bow">
+                <img src="assets/stickers/pink-heart.svg" alt="Heart" class="playful-sticker sticker-playful-heart">
+                <img src="assets/stickers/vintage-camera.svg" alt="Camera" class="playful-sticker sticker-playful-cam">
+              </div>
+              <div class="playful-caption handwriting">maooo sweetie</div>
+              <span class="click-hint-badge">tap me ⇣</span>
+
+              <!-- Collectible Heart #1 on Photo 5: Subtly tucked by the tape & stickers -->
+              <button class="hidden-heart-collectible heart-pos-photo5" data-heart-id="heart-photo" aria-label="Collectible hidden heart on snapshot" title="Hidden heart ♡">
+                <span class="collectible-heart-icon">♡</span>
+              </button>
+            </div>
+
+            <!-- Item A: Vintage Letter Envelope -->
+            <div class="board-element board-letter" tabindex="0" role="button" aria-label="A vintage letter envelope">
+              <div class="washi-tape tape-item tape-kraft" aria-hidden="true"></div>
+              <div class="mini-envelope-content">
+                <img src="assets/stickers/vintage-envelope.svg" alt="Envelope sticker" class="scrapbook-sticker-asset sticker-scale-md">
+                <span class="envelope-tag handwriting">to: my bearuuu</span>
+              </div>
+              <!-- Hidden Heart #2 -->
+              <button class="hidden-heart-collectible" data-heart-id="heart-envelope" aria-label="Collectible hidden heart">
+                <span class="collectible-heart-icon">♡</span>
+              </button>
+            </div>
+
+            <!-- Item B: Vintage Coffee Cup Stain + Biscuit + Butterfly -->
+            <div class="board-element board-coffee-stain">
+              <div class="coffee-ring" aria-hidden="true"></div>
+              <img src="assets/stickers/butterflies.svg" alt="Butterfly sticker" class="scrapbook-sticker-asset sticker-scale-sm">
+              <span class="doodle-note handwriting">made with extra sugar & chai</span>
+              <!-- Hidden Heart #3 -->
+              <button class="hidden-heart-collectible" data-heart-id="heart-coffee" aria-label="Collectible hidden heart">
+                <span class="collectible-heart-icon">♡</span>
+              </button>
+            </div>
+
+            <!-- Item C: Pressed Flower Bookmark -->
+            <div class="board-element board-bookmark">
+              <div class="bookmark-ribbon"></div>
+              <img src="assets/stickers/pressed-flowers.svg" alt="Pressed flowers sticker" class="scrapbook-sticker-asset sticker-scale-md">
+              <span class="bookmark-text handwriting">kept between the pages</span>
+              <!-- Hidden Heart #4 -->
+              <button class="hidden-heart-collectible" data-heart-id="heart-flower" aria-label="Collectible hidden heart">
+                <span class="collectible-heart-icon">♡</span>
+              </button>
+            </div>
+
+            <!-- Item D: Cute Bear Stamp Doodle -->
+            <div class="board-element board-bear-doodle">
+              <div class="bear-doodle-frame">
+                <img src="assets/stickers/teddy-bear.svg" alt="Teddy bear sticker" class="scrapbook-sticker-asset sticker-scale-md">
+                <span class="handwriting doodle-bear-say">“nan muddu”</span>
+              </div>
+              <!-- Hidden Heart #5 -->
+              <button class="hidden-heart-collectible" data-heart-id="heart-bear" aria-label="Collectible hidden heart">
+                <span class="collectible-heart-icon">♡</span>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Unlocked message once all hearts are found (Exact required wording: “hehe… you found them all 🧸”) -->
+          <div class="hearts-unlocked-banner" id="hearts-unlocked-banner" style="display: none;">
+            <div class="unlocked-card pulse-glow">
+              <img src="assets/stickers/teddy-bear.svg" alt="Teddy bear" class="unlocked-bear-img">
+              <h3 class="unlocked-title handwriting">“hehe… you found them all 🧸”</h3>
+              <p class="unlocked-text handwriting">
+                You hold 100% of my heart, Bear. Always & forever! ♡
+              </p>
+              <button class="scrapbook-next-btn highlight-btn" data-next-to="4" aria-label="Proceed to Chapter 4">
+                <span>Unlock Chapter 4: Little Things I Love</span>
+                <span class="arrow-icon">➔</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Fallback direct skip in case user just wants to read through smoothly -->
+          <div class="page-navigation-area" id="chapter-3-standard-nav">
+            <button class="scrapbook-next-btn subtle-nav-btn" data-next-to="4" aria-label="Skip to Chapter 4">
+              <span>Next Page: Little Things I Love</span>
+              <span class="arrow-icon">➔</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CHAPTER 4: LITTLE THINGS I LOVE ABOUT YOU ================= -->
+      <section class="scrapbook-page page-hidden" id="page-4" data-page-index="4" aria-label="Chapter 4: Little Things I Love About You">
+        <div class="page-paper chapter-4-paper">
+          <div class="page-header-decor">
+            <span class="chapter-number-pill">Chapter 4 of 5</span>
+            <h2 class="chapter-title-script handwriting">little things i love about you 🧸✨</h2>
+          </div>
+
+          <p class="section-instruction handwriting">
+            *tap each folded note to unfold my thoughts for you...*
+          </p>
+
+          <!-- PHOTO 6: OUTDOOR COUPLE PHOTO (Landscape memory photograph in cozy scrapbook frame) -->
+          <div class="outdoor-photo-scrapbook-card" id="photo-6-card" tabindex="0" role="button" aria-label="Outdoor couple photograph: cute little chocopie">
+            <div class="washi-tape tape-item tape-gingham outdoor-top-tape" aria-hidden="true"></div>
+            <div class="outdoor-frame-border">
+              <div class="outdoor-photo-container">
+                <div class="photo-display" data-photo-id="PHOTO_6">
+                  <img src="assets/photos/photo6.jpg" alt="Cute little chocopie outdoor couple memory" class="polaroid-real-img">
+                </div>
+              </div>
+            </div>
+            <div class="outdoor-clean-decor" aria-hidden="true">
+              <img src="assets/stickers/pressed-flowers.svg" alt="Tiny flower" class="outdoor-mini-flower">
+              <img src="assets/stickers/stars-cluster.svg" alt="Tiny stars" class="outdoor-mini-stars">
+            </div>
+            <p class="outdoor-caption handwriting">cute little chocopie ♡</p>
+            <div class="outdoor-tucked-note handwriting" aria-live="polite">♡ my favorite smile with you ♡</div>
+          </div>
+
+          <!-- Authentic Scrapbook Board with Folded/Taped Interactive Notes (Section 10 & 11) -->
+          <div class="love-notes-board">
+
+            <!-- Note 1: Nan cute -->
+            <div class="note-card note-card-interactive note-card-1" tabindex="0" role="button" aria-label="Unfold note 1">
+              <div class="washi-tape tape-item tape-plaid" aria-hidden="true"></div>
+              <div class="note-teaser">
+                <span class="teaser-tag handwriting">for nan cutiieeeee litlllleee pumpkin ⇣</span>
+                <span class="teaser-hint">(tap to unfold)</span>
+              </div>
+              <div class="note-revealed-paper">
+                <span class="note-quote-mark">“</span>
+                <p class="note-body handwriting">nan cute, i love you jastiiiii!!!!</p>
+                <img src="assets/stickers/pink-heart.svg" alt="Pink heart" class="inline-note-heart">
+              </div>
+            </div>
+
+            <!-- Note 2: Missing you always -->
+            <div class="note-card note-card-interactive note-card-2" tabindex="0" role="button" aria-label="Unfold note 2">
+              <div class="washi-tape tape-item tape-kraft" aria-hidden="true"></div>
+              <div class="note-teaser">
+                <span class="teaser-tag handwriting">for my cupcake & lotte choco pie ⇣</span>
+                <span class="teaser-hint">(tap to unfold)</span>
+              </div>
+              <div class="note-revealed-paper">
+                <span class="note-quote-mark">“</span>
+                <p class="note-body handwriting">missing you always nan bear maaa, maooo, cute little chocopie</p>
+                <img src="assets/stickers/red-heart.svg" alt="Red heart" class="inline-note-heart">
+              </div>
+            </div>
+
+            <!-- Note 3: You always complete me -->
+            <div class="note-card note-card-interactive note-card-3" tabindex="0" role="button" aria-label="Unfold note 3">
+              <div class="washi-tape tape-item tape-dots" aria-hidden="true"></div>
+              <div class="note-teaser">
+                <span class="teaser-tag handwriting">for nan bearuuu ⇣</span>
+                <span class="teaser-hint">(tap to unfold)</span>
+              </div>
+              <div class="note-revealed-paper">
+                <span class="note-quote-mark">“</span>
+                <p class="note-body handwriting">you always complete me</p>
+                <img src="assets/stickers/stars-cluster.svg" alt="Stars" class="inline-note-heart">
+              </div>
+            </div>
+
+            <!-- Note 4: My maoo maooo sweetie -->
+            <div class="note-card note-card-interactive note-card-4" tabindex="0" role="button" aria-label="Unfold note 4">
+              <div class="washi-tape tape-item tape-gingham" aria-hidden="true"></div>
+              <div class="note-teaser">
+                <span class="teaser-tag handwriting">for paoooo sweetie • maooo ⇣</span>
+                <span class="teaser-hint">(tap to unfold)</span>
+              </div>
+              <div class="note-revealed-paper">
+                <span class="note-quote-mark">“</span>
+                <p class="note-body handwriting">my maoo maooo sweetie</p>
+                <img src="assets/stickers/cute-cat.svg" alt="Cat" class="inline-note-heart">
+              </div>
+            </div>
+
+            <!-- Note 5: Love you bearrr jastiiiiiii -->
+            <div class="note-card note-card-interactive note-card-5" tabindex="0" role="button" aria-label="Unfold note 5">
+              <div class="washi-tape tape-item tape-plaid" aria-hidden="true"></div>
+              <div class="note-teaser">
+                <span class="teaser-tag handwriting">for nan muddu ⇣</span>
+                <span class="teaser-hint">(tap to unfold)</span>
+              </div>
+              <div class="note-revealed-paper">
+                <span class="note-quote-mark">“</span>
+                <p class="note-body handwriting">love you bearrr jastiiiiiii</p>
+                <img src="assets/stickers/teddy-bear.svg" alt="Teddy" class="inline-note-heart">
+              </div>
+            </div>
+
+            <!-- Note 6 (Section 11 Personal Feeling Note): "i love you when you are around me bearraaaaa" -->
+            <div class="note-card note-card-interactive note-card-6 special-personal-note" tabindex="0" role="button" aria-label="Unfold note 6">
+              <div class="washi-tape tape-item tape-kraft" aria-hidden="true"></div>
+              <div class="note-teaser">
+                <span class="teaser-tag handwriting">for bearraaaaa ⇣</span>
+                <span class="teaser-hint">(a little piece of my heart)</span>
+              </div>
+              <div class="note-revealed-paper">
+                <span class="note-quote-mark">“</span>
+                <p class="note-body handwriting">i love you when you are around me bearraaaaa</p>
+                <img src="assets/stickers/kiss-lips.svg" alt="Kiss lips" class="inline-note-heart">
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Stickers distributed on Chapter 4 (hearts, lips, flowers, "I love you", "my love", teddy) -->
+          <div class="ch4-decorations-container" aria-hidden="true">
+            <img src="assets/stickers/i-love-you.svg" alt="I Love You sticker" class="ch4-sticker sticker-ily wiggle-click">
+            <img src="assets/stickers/my-love.svg" alt="My Love stamp" class="ch4-sticker sticker-mylove wiggle-click">
+            <img src="assets/stickers/kiss-lips.svg" alt="Lips sticker" class="ch4-sticker sticker-lips wiggle-click">
+            <img src="assets/stickers/pressed-flowers.svg" alt="Flowers sticker" class="ch4-sticker sticker-flowers wiggle-click">
+            <img src="assets/stickers/red-heart.svg" alt="Red heart" class="ch4-sticker sticker-rheart">
+          </div>
+
+          <!-- Bottom Navigation leading to Chapter 5 -->
+          <div class="page-navigation-area">
+            <p class="nav-hint-text handwriting">psst... there is one more very special page ⇣</p>
+            <button class="scrapbook-next-btn" data-next-to="5" aria-label="Next Chapter: The Secret">
+              <span>Next Page: The Final Page</span>
+              <span class="arrow-icon">➔</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CHAPTER 5: THE SECRET ("FOR BEAR ONLY") ================= -->
+      <section class="scrapbook-page page-hidden" id="page-5" data-page-index="5" aria-label="Chapter 5: The Secret">
+        <div class="page-paper secret-page-paper">
+          <div class="page-header-decor">
+            <span class="chapter-number-pill">Chapter 5 of 5</span>
+            <h2 class="chapter-title-script handwriting">the final page of our journal...</h2>
+          </div>
+
+          <div class="washi-tape tape-top-left tape-plaid" aria-hidden="true"></div>
+          <div class="washi-tape tape-top-right tape-gingham" aria-hidden="true"></div>
+
+          <!-- Special "Bear" Solo Polaroid Frame (PHOTO 7) -->
+          <div class="special-photo-wrapper">
+            <div class="special-polaroid-frame" id="photo-7-frame" tabindex="0" role="button" aria-label="Abhishek's special Bear photograph">
+              <div class="washi-tape tape-kraft polaroid-tape" aria-hidden="true"></div>
+              <div class="photo-display special-photo-display" data-photo-id="PHOTO_7">
+                <img src="assets/photos/photo7.jpg" alt="Abhishek - My Bear" class="polaroid-real-img bear-solo-img" style="object-position: center 25%;">
+              </div>
+              <div class="bear-solo-decor" aria-hidden="true">
+                <img src="assets/stickers/teddy-bear.svg" alt="Teddy sticker" class="bear-solo-teddy">
+                <img src="assets/stickers/red-heart.svg" alt="Heart sticker" class="bear-solo-heart">
+              </div>
+              <p class="special-caption handwriting">my bear 🧸</p>
+              <span class="click-hint-badge">tap me bear ⇣</span>
+            </div>
+          </div>
+
+          <!-- Secret Note Trigger: "for bear only" attached with washi tape & mini bow (Section 12) -->
+          <div class="secret-trigger-container" id="secret-trigger-container">
+            <p class="secret-hint-text handwriting">look closely... this note is sealed with love:</p>
+            
+            <button id="secret-note-btn" class="secret-wax-envelope" aria-label="Open secret note for bear only">
+              <div class="wax-envelope-paper">
+                <div class="washi-tape tape-item tape-gingham envelope-tape" aria-hidden="true"></div>
+                <img src="assets/stickers/red-bow.svg" alt="Mini bow" class="secret-pin-bow">
+                <div class="wax-seal-stamp" aria-hidden="true">
+                  <span class="wax-seal-inner">🧸</span>
+                </div>
+                <span class="secret-btn-label handwriting">for bear only</span>
+                <span class="secret-sub-label">tap to unseal 🗝️</span>
+              </div>
+            </button>
+          </div>
+
+          <!-- The Secret Reveal Modal / Centerpiece (Section 13) -->
+          <div class="secret-reveal-overlay" id="secret-reveal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="secret-heading">
+            <div class="secret-letter-card" id="secret-letter-card">
+              <button class="close-secret-btn" id="close-secret-btn" aria-label="Close note">✕</button>
+              
+              <!-- Vintage Postage Header -->
+              <div class="letter-stamp-top">
+                <span class="letter-postmark handwriting">express delivery to bear's heart 💌</span>
+              </div>
+
+              <!-- Surrounding Decorations around the Final Note (Section 13) -->
+              <div class="letter-inner-content">
+                <div class="secret-decor-cluster" aria-hidden="true">
+                  <img src="assets/stickers/red-bow.svg" alt="Red bow" class="final-decor final-bow">
+                  <img src="assets/stickers/teddy-bear.svg" alt="Teddy bear" class="final-decor final-teddy animate-bob">
+                  <img src="assets/stickers/red-heart.svg" alt="Red heart" class="final-decor final-heart">
+                  <img src="assets/stickers/pressed-flowers.svg" alt="Flowers" class="final-decor final-flowers">
+                  <img src="assets/stickers/stars-cluster.svg" alt="Stars" class="final-decor final-stars">
+                </div>
+
+                <h3 id="secret-heading" class="secret-main-greeting handwriting">
+                  Happy Boyfriend's Day, Bear. 🧸♡
+                </h3>
+
+                <!-- The Exact Secret Message as Specified in Prompt Section 13 -->
+                <div class="secret-typewriter-box">
+                  <p class="secret-message-p handwriting" id="secret-final-text">
+                    <!-- Loaded dynamically or typed -->
+                  </p>
+                </div>
+
+                <div class="secret-signature handwriting">
+                  <p>yours always & forever,</p>
+                  <p class="girlfriend-name">with all my love ♡</p>
+                </div>
+
+                <div class="letter-footer-confetti-btn">
+                  <button id="celebrate-btn" class="scrapbook-action-btn pulse-glow">
+                    <span>Shower Bear with Love ✨🧸</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Photo Enlarge / Lightbox Modal -->
+  <div class="photo-lightbox-modal" id="photo-lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="lightbox-content">
+      <button class="lightbox-close-btn" id="lightbox-close" aria-label="Close enlarged photo">✕</button>
+      <div class="lightbox-polaroid">
+        <div class="lightbox-img-container" id="lightbox-img-target"></div>
+        <p class="lightbox-caption handwriting" id="lightbox-caption-target"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mini Secret Note Modal from Chapter 2 Envelope -->
+  <div class="secret-reveal-overlay" id="envelope-letter-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="secret-letter-card mini-letter-card">
+      <button class="close-secret-btn" id="close-envelope-btn" aria-label="Close note">✕</button>
+      <div class="mini-letter-content">
+        <img src="assets/stickers/teddy-bear.svg" alt="Teddy" class="mini-envelope-bear">
+        <h4 class="handwriting mini-letter-heading">my bearuuu ♡</h4>
+        <p class="handwriting mini-letter-body">
+          “you are the warmest part of every cold day. i love you jastiiiiiii!”
+        </p>
+        <span class="handwriting mini-letter-sign">your girl ♡</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cute Scrapbook Toast Notification for Trinkets & Discoveries -->
+  <div class="scrapbook-toast" id="scrapbook-toast" aria-live="polite"></div>
+
+  <!-- Photo Customizer Modal (For uploading real photos into local storage) -->
+  <div class="customizer-modal" id="customizer-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="customizer-title">
+    <div class="customizer-card">
+      <div class="customizer-header">
+        <h3 id="customizer-title" class="handwriting">📷 Our Scrapbook Photos</h3>
+        <button class="customizer-close-btn" id="customizer-close" aria-label="Close photo customizer">✕</button>
+      </div>
+      <p class="customizer-desc">
+        You can upload your real couple photos here anytime! They are saved right in this browser, so when Bear opens it, your real photos will shine in every Polaroid frame!
+      </p>
+
+      <div class="upload-slots-grid">
+        <div class="upload-slot">
+          <label for="upload-main" class="slot-label">
+            <span class="slot-title">Main Couple Photo</span>
+            <span class="slot-tag">[MAIN_COUPLE_PHOTO] (Ch. 1)</span>
+          </label>
+          <input type="file" id="upload-main" data-target="MAIN_COUPLE_PHOTO" accept="image/*" class="slot-file-input">
+        </div>
+
+        <div class="upload-slot">
+          <label for="upload-m1" class="slot-label">
+            <span class="slot-title">Memory 1 (Chai Dates)</span>
+            <span class="slot-tag">[MEMORY_PHOTO_1]</span>
+          </label>
+          <input type="file" id="upload-m1" data-target="MEMORY_PHOTO_1" accept="image/*" class="slot-file-input">
+        </div>
+
+        <div class="upload-slot">
+          <label for="upload-m2" class="slot-label">
+            <span class="slot-title">Memory 2 (Goofy Laughs)</span>
+            <span class="slot-tag">[MEMORY_PHOTO_2]</span>
+          </label>
+          <input type="file" id="upload-m2" data-target="MEMORY_PHOTO_2" accept="image/*" class="slot-file-input">
+        </div>
+
+        <div class="upload-slot">
+          <label for="upload-m3" class="slot-label">
+            <span class="slot-title">Memory 3 (Sunset Walks)</span>
+            <span class="slot-tag">[MEMORY_PHOTO_3]</span>
+          </label>
+          <input type="file" id="upload-m3" data-target="MEMORY_PHOTO_3" accept="image/*" class="slot-file-input">
+        </div>
+
+        <div class="upload-slot">
+          <label for="upload-m4" class="slot-label">
+            <span class="slot-title">Memory 4 (Safe Space)</span>
+            <span class="slot-tag">[MEMORY_PHOTO_4]</span>
+          </label>
+          <input type="file" id="upload-m4" data-target="MEMORY_PHOTO_4" accept="image/*" class="slot-file-input">
+        </div>
+
+        <div class="upload-slot">
+          <label for="upload-special" class="slot-label">
+            <span class="slot-title">Special Photo (Ch. 5)</span>
+            <span class="slot-tag">[SPECIAL_PHOTO]</span>
+          </label>
+          <input type="file" id="upload-special" data-target="SPECIAL_PHOTO" accept="image/*" class="slot-file-input">
+        </div>
+      </div>
+
+      <div class="customizer-actions">
+        <button id="reset-photos-btn" class="scrapbook-secondary-btn">Reset to Default Illustrations</button>
+        <button id="save-photos-btn" class="scrapbook-action-btn">Done & Keep Saved ♡</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

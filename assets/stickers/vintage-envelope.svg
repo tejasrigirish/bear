@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80" width="100%" height="100%">
+  <defs>
+    <filter id="env-shadow" x="-10%" y="-10%" width="125%" height="130%">
+      <feDropShadow dx="1" dy="3" stdDeviation="2.5" flood-color="#2c1a10" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <g filter="url(#env-shadow)">
+    <!-- White die cut border -->
+    <rect x="5" y="10" width="90" height="60" rx="7" fill="#ffffff" stroke="#f4ebe0" stroke-width="4"/>
+    <!-- Kraft Envelope Base -->
+    <rect x="8" y="13" width="84" height="54" rx="5" fill="#dfcbb5"/>
+    <!-- Envelope folds -->
+    <path d="M8 13 L50 44 L92 13" fill="#ead8c4" stroke="#cbb299" stroke-width="1.2"/>
+    <path d="M8 67 L42 38" stroke="#cbb299" stroke-width="1.2"/>
+    <path d="M92 67 L58 38" stroke="#cbb299" stroke-width="1.2"/>
+    <!-- Mini postal cancellation stamp -->
+    <circle cx="78" cy="26" r="8" fill="none" stroke="#96775d" stroke-width="1" stroke-dasharray="2 1.5"/>
+    <text x="78" y="28.5" font-family="'Nunito', sans-serif" font-size="5.5" font-weight="700" fill="#96775d" text-anchor="middle">AIR MAIL</text>
+    <!-- Red Wax Seal in Center -->
+    <circle cx="50" cy="42" r="10" fill="#a62c20"/>
+    <circle cx="50" cy="42" r="7.5" fill="#c73c2e"/>
+    <!-- Heart embossed in seal -->
+    <path d="M50 39 Q48 37 46 38.5 Q44 40.5 50 45 Q56 40.5 54 38.5 Q52 37 50 39 Z" fill="#751c14"/>
+  </g>
+</svg>

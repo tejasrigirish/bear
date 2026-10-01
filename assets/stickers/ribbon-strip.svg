@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 30" width="100%" height="100%">
+  <defs>
+    <filter id="rs-shadow" x="-10%" y="-20%" width="120%" height="150%">
+      <feDropShadow dx="1" dy="2" stdDeviation="1.8" flood-color="#2c1a10" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <g filter="url(#rs-shadow)">
+    <rect x="2" y="2" width="156" height="26" fill="#ffffff" stroke="#f4ede2" stroke-width="2"/>
+    <rect x="4" y="4" width="152" height="22" fill="#c4786e"/>
+    <line x1="8" y1="15" x2="152" y2="15" stroke="#f6ded9" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <!-- Scalloped dots -->
+    <circle cx="16" cy="15" r="2" fill="#ffffff"/>
+    <circle cx="36" cy="15" r="2" fill="#ffffff"/>
+    <circle cx="56" cy="15" r="2" fill="#ffffff"/>
+    <circle cx="76" cy="15" r="2" fill="#ffffff"/>
+    <circle cx="96" cy="15" r="2" fill="#ffffff"/>
+    <circle cx="116" cy="15" r="2" fill="#ffffff"/>
+    <circle cx="136" cy="15" r="2" fill="#ffffff"/>
+  </g>
+</svg>

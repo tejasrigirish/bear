@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 90" width="100%" height="100%">
+  <defs>
+    <filter id="cat-shadow" x="-10%" y="-10%" width="125%" height="130%">
+      <feDropShadow dx="1" dy="3" stdDeviation="2.5" flood-color="#2c1a10" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <g filter="url(#cat-shadow)">
+    <!-- White die cut border -->
+    <ellipse cx="55" cy="52" rx="48" ry="34" fill="#ffffff" stroke="#f6eee4" stroke-width="4"/>
+    <!-- Cat body curled up -->
+    <ellipse cx="55" cy="54" rx="42" ry="28" fill="#e8cfba"/>
+    <!-- Tail wrapped around -->
+    <path d="M16 56 C14 38 32 30 46 32" stroke="#d4b49a" stroke-width="8" stroke-linecap="round" fill="none"/>
+    <!-- Cat Head -->
+    <circle cx="74" cy="46" r="20" fill="#edd6c4"/>
+    <!-- Ears -->
+    <polygon points="64,30 70,18 78,28" fill="#d4b49a"/>
+    <polygon points="67,28 71,21 76,27" fill="#f2a89f"/>
+    <polygon points="80,28 88,18 94,30" fill="#d4b49a"/>
+    <polygon points="82,27 87,21 91,28" fill="#f2a89f"/>
+    <!-- Sleeping Eyes (curved lines) -->
+    <path d="M68 45 Q72 49 76 45" stroke="#4a3020" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+    <path d="M82 45 Q86 49 90 45" stroke="#4a3020" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+    <!-- Nose & Mouth -->
+    <polygon points="78,49 80,49 79,51" fill="#e8988a"/>
+    <path d="M76 52 Q79 54 82 52" stroke="#4a3020" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    <!-- Rosy Cheeks -->
+    <ellipse cx="68" cy="49" rx="3.5" ry="2" fill="#f09d92" opacity="0.7"/>
+    <ellipse cx="90" cy="49" rx="3.5" ry="2" fill="#f09d92" opacity="0.7"/>
+    <!-- Whiskers -->
+    <line x1="60" y1="48" x2="52" y2="46" stroke="#a68469" stroke-width="1.2"/>
+    <line x1="60" y1="51" x2="53" y2="52" stroke="#a68469" stroke-width="1.2"/>
+    <line x1="96" y1="48" x2="104" y2="46" stroke="#a68469" stroke-width="1.2"/>
+    <line x1="96" y1="51" x2="103" y2="52" stroke="#a68469" stroke-width="1.2"/>
+    <!-- Little paws tucked -->
+    <ellipse cx="64" cy="66" rx="6" ry="4.5" fill="#f7ebe1"/>
+    <ellipse cx="76" cy="66" rx="6" ry="4.5" fill="#f7ebe1"/>
+  </g>
+</svg>

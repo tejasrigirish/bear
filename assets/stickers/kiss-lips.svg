@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 60" width="100%" height="100%">
+  <defs>
+    <filter id="lip-shadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#2c1a10" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <g filter="url(#lip-shadow)">
+    <!-- White border -->
+    <path d="M10 30 C20 12 36 20 45 24 C54 20 70 12 80 30 C72 48 55 52 45 52 C35 52 18 48 10 30 Z" fill="#ffffff" stroke="#fbf2ea" stroke-width="3.5" stroke-linejoin="round"/>
+    <!-- Top Lip -->
+    <path d="M14 29 C24 16 38 22 45 26 C52 22 66 16 76 29 C68 33 54 30 45 32 C36 30 22 33 14 29 Z" fill="#c43e37"/>
+    <!-- Bottom Lip -->
+    <path d="M18 33 C30 35 40 35 45 35 C50 35 60 35 72 33 C68 47 54 48 45 48 C36 48 22 47 18 33 Z" fill="#b3332d"/>
+    <ellipse cx="45" cy="41" rx="14" ry="4" fill="#d95d55" opacity="0.6"/>
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 54" width="100%" height="100%">
+  <defs>
+    <filter id="pq1-shadow" x="-10%" y="-15%" width="125%" height="140%">
+      <feDropShadow dx="1" dy="2.5" stdDeviation="2" flood-color="#2c1a10" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <g filter="url(#pq1-shadow)">
+    <rect x="3" y="3" width="164" height="48" rx="4" fill="#ffffff" stroke="#f4ede2" stroke-width="2"/>
+    <!-- Lined Paper Notebook Scrap -->
+    <rect x="5" y="5" width="160" height="44" fill="#faf6f0"/>
+    <line x1="10" y1="18" x2="160" y2="18" stroke="#e0d4c3" stroke-width="1"/>
+    <line x1="10" y1="32" x2="160" y2="32" stroke="#e0d4c3" stroke-width="1"/>
+    <!-- Tape at corner -->
+    <rect x="0" y="0" width="22" height="10" rx="1" fill="#cbb295" opacity="0.8" transform="rotate(-15 11 5)"/>
+    <text x="85" y="30" font-family="'Caveat', cursive" font-weight="700" font-size="18" fill="#4d3221" text-anchor="middle">you make my heart smile ♡</text>
+  </g>
+</svg>

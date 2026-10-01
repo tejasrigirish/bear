@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 44" width="100%" height="100%">
+  <defs>
+    <filter id="pq2-shadow" x="-10%" y="-15%" width="125%" height="140%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#2c1a10" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  <g filter="url(#pq2-shadow)">
+    <rect x="3" y="3" width="144" height="38" rx="6" fill="#ffffff" stroke="#f4ece1" stroke-width="2.5"/>
+    <rect x="5" y="5" width="140" height="34" rx="4" fill="#eee1d0"/>
+    <rect x="8" y="8" width="134" height="28" rx="3" fill="none" stroke="#bda083" stroke-width="1" stroke-dasharray="3 2"/>
+    <text x="75" y="27" font-family="'Playfair Display', Georgia, serif" font-style="italic" font-weight="600" font-size="15" fill="#3b2416" text-anchor="middle">forever &amp; always</text>
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 46" width="100%" height="100%">
+  <defs>
+    <filter id="ym-shadow" x="-10%" y="-15%" width="125%" height="140%">
+      <feDropShadow dx="1" dy="2.5" stdDeviation="2" flood-color="#2c1a10" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <g filter="url(#ym-shadow)">
+    <!-- White Die-Cut Base with slight tilt feel -->
+    <rect x="3" y="3" width="134" height="40" rx="8" fill="#ffffff" stroke="#f6eee4" stroke-width="3"/>
+    <!-- Soft Dusty Rose/Blush Washi Tape -->
+    <rect x="6" y="6" width="128" height="34" rx="6" fill="#f0dbd4"/>
+    <!-- Torn tape jagged ends simulation -->
+    <line x1="6" y1="6" x2="6" y2="40" stroke="#dab9af" stroke-width="1.5" stroke-dasharray="2 2"/>
+    <line x1="134" y1="6" x2="134" y2="40" stroke="#dab9af" stroke-width="1.5" stroke-dasharray="2 2"/>
+    <!-- Script Text -->
+    <text x="70" y="28" font-family="'Caveat', cursive" font-weight="700" font-size="20" fill="#663529" text-anchor="middle" letter-spacing="0.5">you’re mine ♡</text>
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 65" width="100%" height="100%">
+  <defs>
+    <filter id="rh-shadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="1" dy="2.5" stdDeviation="2" flood-color="#2c1a10" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <g filter="url(#rh-shadow)">
+    <!-- White die cut border -->
+    <path d="M35 16 Q30 6 18 10 Q6 17 6 30 Q6 43 35 60 Q64 43 64 30 Q64 17 52 10 Q40 6 35 16 Z" fill="#ffffff" stroke="#f6eee4" stroke-width="3.5" stroke-linejoin="round"/>
+    <!-- Crimson paper heart -->
+    <path d="M35 18 Q31 9 20 12 Q9 18 9 30 Q9 41 35 56 Q61 41 61 30 Q61 18 50 12 Q39 9 35 18 Z" fill="#ba3325"/>
+    <!-- Inner stitched detail -->
+    <path d="M35 22 Q31 15 22 17 Q14 22 14 30 Q14 38 35 50 Q56 38 56 30 Q56 22 48 17 Q39 15 35 22 Z" fill="none" stroke="#e07267" stroke-width="1.2" stroke-dasharray="2 2"/>
+    <!-- Highlight shine -->
+    <path d="M16 22 Q14 27 15 32" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.65"/>
+  </g>
+</svg>

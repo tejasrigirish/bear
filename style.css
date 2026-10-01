@@ -1,0 +1,2994 @@
+/* ==========================================================================
+   COZY BEAR SCRAPBOOK — DESIGN SYSTEM & STYLESHEET
+   Aesthetic: Warm cozy journal, Pinterest scrapbook, Brown + Beige palette
+   ========================================================================== */
+
+:root {
+  /* Core Color Palette: Warm Cozy Browns, Beiges & Creams */
+  --bg-desk: #2c1e17;
+  --bg-desk-grain: #231610;
+  --paper-cream: #faf5ee;
+  --paper-cream-alt: #f4ecdf;
+  --paper-vintage: #edd9c2;
+  --paper-shadow: rgba(45, 28, 18, 0.16);
+  --paper-shadow-deep: rgba(30, 18, 11, 0.28);
+  
+  --brown-deep: #3d271d;
+  --brown-espresso: #4a3024;
+  --brown-warm: #684632;
+  --brown-terracotta: #945938;
+  --brown-caramel: #b87b4b;
+  --brown-tan: #cf9b6b;
+  --sand-beige: #e4cbb4;
+  --cream-soft: #fcf9f2;
+
+  --accent-rose: #c25f53;
+  --accent-rose-soft: #e38d82;
+  --accent-sage: #6b7d60;
+  --accent-gold: #d99c43;
+  --accent-chocolate: #2b170c;
+
+  /* Typography */
+  --font-handwriting: 'Caveat', 'Patrick Hand', cursive;
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-script: 'Reenie Beanie', cursive;
+
+  /* Transitions */
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-paper: cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.35s var(--ease-paper);
+}
+
+/* Reset & Basics */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-desk);
+  background-image: 
+    radial-gradient(circle at 50% 30%, rgba(138, 93, 63, 0.25) 0%, transparent 70%),
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.015) 0px, rgba(255, 255, 255, 0.015) 2px, transparent 2px, transparent 8px),
+    linear-gradient(to bottom, #2d1c15, #1d110b);
+  background-attachment: fixed;
+  color: var(--brown-deep);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom Sparkle Trail Canvas */
+#sparkle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Typography Utility */
+.handwriting {
+  font-family: var(--font-handwriting);
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   TOP CONTROLS & CHAPTER TRACKER (Scrapbook Ribbon/Pins)
+   ========================================================================== */
+
+.scrapbook-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(35, 22, 16, 0.85);
+  border-bottom: 1px solid rgba(228, 203, 180, 0.15);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  gap: 12px;
+}
+
+.top-controls-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.scrapbook-pin-btn {
+  background: #fbf5ee;
+  border: 1px solid #d4beaa;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: var(--brown-deep);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all var(--transition-fast);
+}
+
+.scrapbook-pin-btn:hover {
+  transform: translateY(-1.5px);
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.scrapbook-pin-btn:active {
+  transform: translateY(0.5px);
+}
+
+.pin-icon {
+  font-size: 0.95rem;
+}
+
+/* Discreet Scrapbook Hearts Chapter Tracker: ♡ ♡ ♡ ♡ ♡ */
+.chapter-hearts-tracker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(244, 236, 223, 0.12);
+  padding: 5px 12px;
+  border-radius: 25px;
+  border: 1px solid rgba(244, 236, 223, 0.18);
+}
+
+.tracker-label {
+  font-family: var(--font-handwriting);
+  font-size: 0.95rem;
+  color: var(--sand-beige);
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .tracker-label {
+    display: inline-block;
+  }
+}
+
+.hearts-list {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.heart-chapter-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px 4px;
+  position: relative;
+  transition: transform var(--transition-fast);
+}
+
+.heart-chapter-btn:hover {
+  transform: scale(1.3);
+}
+
+.heart-chapter-btn .heart-icon {
+  font-size: 1.25rem;
+  color: #caa893;
+  transition: all 0.3s var(--ease-spring);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.heart-chapter-btn.active .heart-icon {
+  color: var(--accent-rose);
+  transform: scale(1.15);
+  text-shadow: 0 0 10px rgba(194, 95, 83, 0.5);
+}
+
+.heart-chapter-btn.completed .heart-icon {
+  color: var(--accent-rose);
+}
+
+.heart-tooltip {
+  display: none;
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--paper-cream);
+  color: var(--brown-deep);
+  font-size: 0.68rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.heart-chapter-btn:hover .heart-tooltip {
+  display: block;
+}
+
+/* ==========================================================================
+   DESK CONTAINER & SCRAPBOOK PAGES
+   ========================================================================== */
+
+.desk-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px 40px;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.scrapbook-wrapper {
+  width: 100%;
+  position: relative;
+  perspective: 1200px;
+}
+
+/* Individual Scrapbook Page */
+.scrapbook-page {
+  width: 100%;
+  transition: opacity 0.4s var(--ease-paper), transform 0.4s var(--ease-paper);
+}
+
+.page-hidden {
+  display: none;
+  opacity: 0;
+  transform: scale(0.97) translateY(12px);
+  pointer-events: none;
+}
+
+.page-active {
+  display: block;
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  animation: pageTurnIn 0.45s var(--ease-paper) forwards;
+}
+
+@keyframes pageTurnIn {
+  0% {
+    opacity: 0;
+    transform: rotate(-0.8deg) translateY(16px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) translateY(0) scale(1);
+  }
+}
+
+/* Paper Base & Textures */
+.page-paper {
+  background-color: var(--paper-cream);
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(184, 123, 75, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(104, 70, 50, 0.06) 0%, transparent 50%),
+    repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(104, 70, 50, 0.035) 28px);
+  border-radius: 8px;
+  padding: 36px 24px 30px;
+  position: relative;
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.12),
+    0 8px 24px var(--paper-shadow-deep),
+    0 20px 45px rgba(20, 11, 6, 0.35),
+    inset 0 0 45px rgba(180, 140, 100, 0.09);
+  border: 1px solid rgba(215, 195, 175, 0.8);
+  overflow: hidden;
+}
+
+/* Notebook Perforated / Ragged left binding look */
+.page-paper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 28px,
+    rgba(61, 39, 29, 0.18) 28px,
+    rgba(61, 39, 29, 0.18) 32px
+  );
+  border-right: 1px dashed rgba(104, 70, 50, 0.2);
+  pointer-events: none;
+}
+
+/* Page Header Decor */
+.page-header-decor {
+  text-align: center;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.chapter-number-pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--brown-warm);
+  background: rgba(184, 123, 75, 0.12);
+  padding: 3px 12px;
+  border-radius: 12px;
+  border: 1px dashed rgba(184, 123, 75, 0.35);
+  margin-bottom: 6px;
+}
+
+.chapter-title-script {
+  font-size: 1.95rem;
+  color: var(--brown-deep);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.section-instruction {
+  text-align: center;
+  font-size: 1.05rem;
+  color: var(--brown-warm);
+  margin-bottom: 20px;
+  opacity: 0.85;
+}
+
+/* ==========================================================================
+   AUTHENTIC SCRAPBOOK WASHI TAPE & DECOR
+   ========================================================================== */
+
+.washi-tape {
+  position: absolute;
+  height: 22px;
+  width: 76px;
+  background-color: rgba(235, 215, 185, 0.82);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0.88;
+  backdrop-filter: blur(1px);
+}
+
+.tape-kraft {
+  background-color: #d6b896;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(90, 60, 40, 0.05) 5px, rgba(90, 60, 40, 0.05) 10px);
+}
+
+.tape-plaid {
+  background: #e2c0a8;
+  background-image: 
+    repeating-linear-gradient(0deg, rgba(162, 85, 65, 0.2) 0px, rgba(162, 85, 65, 0.2) 4px, transparent 4px, transparent 12px),
+    repeating-linear-gradient(90deg, rgba(162, 85, 65, 0.2) 0px, rgba(162, 85, 65, 0.2) 4px, transparent 4px, transparent 12px);
+}
+
+.tape-gingham {
+  background: #d4e0cf;
+  background-image: 
+    repeating-linear-gradient(0deg, rgba(90, 115, 80, 0.2) 0px, rgba(90, 115, 80, 0.2) 5px, transparent 5px, transparent 10px),
+    repeating-linear-gradient(90deg, rgba(90, 115, 80, 0.2) 0px, rgba(90, 115, 80, 0.2) 5px, transparent 5px, transparent 10px);
+}
+
+.tape-dots {
+  background: #f0dec5;
+  background-image: radial-gradient(rgba(104, 70, 50, 0.25) 1.5px, transparent 0);
+  background-size: 7px 7px;
+}
+
+.tape-top-left {
+  top: -6px;
+  left: 30px;
+  transform: rotate(-4deg);
+}
+
+.tape-top-right {
+  top: -6px;
+  right: 35px;
+  transform: rotate(3deg);
+}
+
+.tape-bottom-center {
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+  width: 90px;
+}
+
+/* Scrapbook Ribbon Bow */
+.scrapbook-bow {
+  position: absolute;
+  width: 32px;
+  height: 22px;
+  z-index: 12;
+  pointer-events: none;
+}
+
+.scrapbook-bow::before, .scrapbook-bow::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50% 50% 10% 50%;
+  border: 2px solid var(--accent-rose);
+  background: rgba(194, 95, 83, 0.25);
+}
+
+.scrapbook-bow::before {
+  left: 2px;
+  transform: rotate(30deg);
+}
+
+.scrapbook-bow::after {
+  right: 2px;
+  transform: rotate(-30deg) scaleX(-1);
+}
+
+.bow-top-center {
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bow-top-left {
+  top: 14px;
+  left: 24px;
+}
+
+/* Vintage Post Stamp */
+.post-stamp {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 72px;
+  height: 58px;
+  background: #f8efe4;
+  border: 2px dashed #b89376;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(4deg);
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.stamp-inner {
+  font-size: 0.58rem;
+  font-weight: 700;
+  text-align: center;
+  color: #8b5f40;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+/* ==========================================================================
+   CHAPTER 0: COVER / OPENING SCREEN
+   ========================================================================== */
+
+.cover-page-paper {
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 50px 24px;
+}
+
+.cover-content {
+  position: relative;
+  z-index: 20;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.cute-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(228, 203, 180, 0.35);
+  border: 1px solid rgba(184, 123, 75, 0.3);
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+  cursor: default;
+}
+
+.badge-text {
+  font-family: var(--font-handwriting);
+  font-size: 1.15rem;
+  color: var(--brown-warm);
+}
+
+.cover-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 7vw, 3.6rem);
+  font-weight: 700;
+  color: var(--brown-deep);
+  line-height: 1.1;
+  margin-bottom: 12px;
+  text-shadow: 1px 2px 0 rgba(255, 255, 255, 0.8);
+}
+
+.greeting-pre {
+  display: block;
+  font-size: 0.55em;
+  font-family: var(--font-handwriting);
+  font-weight: 400;
+  color: var(--brown-terracotta);
+  margin-bottom: -4px;
+  letter-spacing: 2px;
+}
+
+.greeting-bear {
+  letter-spacing: 2px;
+  color: var(--brown-deep);
+}
+
+.bear-emoji {
+  display: inline-block;
+  margin-left: 6px;
+}
+
+.cover-subtitle {
+  font-size: 1.65rem;
+  color: var(--brown-warm);
+  margin-bottom: 32px;
+  font-weight: 600;
+}
+
+.cover-doodles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.doodle {
+  position: absolute;
+  color: var(--accent-gold);
+  font-size: 1.4rem;
+  opacity: 0.65;
+  animation: floatDoodle 3s ease-in-out infinite alternate;
+}
+
+.star-doodle-1 { top: -20px; left: 15%; animation-delay: 0.2s; }
+.star-doodle-2 { top: 20px; right: 10%; animation-delay: 0.8s; }
+.heart-doodle { bottom: 10px; left: 10%; color: var(--accent-rose); font-size: 1.8rem; animation-delay: 1.2s; }
+.sparkle-doodle { bottom: 20px; right: 15%; animation-delay: 0.5s; }
+
+@keyframes floatDoodle {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-8px) rotate(6deg); }
+}
+
+/* Peeking Polaroid on the Cover */
+.peeking-polaroid {
+  position: absolute;
+  bottom: 20px;
+  right: -15px;
+  background: #ffffff;
+  padding: 8px 8px 18px;
+  border-radius: 4px;
+  box-shadow: 2px 8px 20px rgba(45, 28, 18, 0.18);
+  transform: rotate(10deg);
+  width: 125px;
+  z-index: 5;
+  transition: transform var(--transition-normal);
+  cursor: pointer;
+}
+
+.peeking-polaroid:hover {
+  transform: rotate(6deg) translateY(-8px);
+}
+
+.peeking-photo-frame {
+  width: 100%;
+  height: 105px;
+  background: #f0e6d8;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.peeking-label {
+  display: block;
+  text-align: center;
+  font-family: var(--font-handwriting);
+  font-size: 0.95rem;
+  color: var(--brown-warm);
+  margin-top: 4px;
+}
+
+.bottom-left-doodle {
+  position: absolute;
+  bottom: 14px;
+  left: 28px;
+  font-size: 1.15rem;
+  color: var(--brown-caramel);
+  transform: rotate(-8deg);
+  pointer-events: none;
+}
+
+/* Main Scrapbook Action Button */
+.scrapbook-action-btn {
+  background: linear-gradient(135deg, #b87b4b, #8a5732);
+  color: #fff;
+  border: 1px solid #704423;
+  border-radius: 30px;
+  padding: 14px 30px;
+  font-family: var(--font-sans);
+  font-size: 1.08rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(74, 48, 36, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-fast);
+}
+
+.scrapbook-action-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 22px rgba(74, 48, 36, 0.45);
+  background: linear-gradient(135deg, #c48757, #99623b);
+}
+
+.scrapbook-action-btn:active {
+  transform: translateY(1px);
+}
+
+.pulse-glow {
+  animation: buttonPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes buttonPulse {
+  0%, 100% { box-shadow: 0 4px 14px rgba(74, 48, 36, 0.35); }
+  50% { box-shadow: 0 6px 24px rgba(184, 123, 75, 0.6); }
+}
+
+/* ==========================================================================
+   CHAPTER 1: THE POLAROID (3D FLIP & TYPEWRITER)
+   ========================================================================== */
+
+.polaroid-scene {
+  perspective: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto 28px;
+  max-width: 380px;
+  width: 100%;
+}
+
+.polaroid-card {
+  width: 100%;
+  max-width: 320px;
+  height: 400px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+  cursor: pointer;
+  outline: none;
+  transform: rotate(-2.5deg);
+}
+
+.polaroid-card:hover {
+  transform: rotate(-1.5deg) translateY(-5px);
+}
+
+.polaroid-card.flipped {
+  transform: rotateY(180deg) rotate(2deg) translateY(-4px);
+}
+
+.polaroid-card:focus-visible {
+  box-shadow: 0 0 0 3px var(--accent-rose);
+}
+
+/* Front & Back Faces */
+.polaroid-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 4px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background: #ffffff;
+  padding: 16px 16px 24px;
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.08),
+    0 12px 28px var(--paper-shadow-deep);
+  display: flex;
+  flex-direction: column;
+}
+
+.polaroid-tape {
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(1deg);
+  width: 80px;
+}
+
+.polaroid-photo-box {
+  width: 100%;
+  height: 270px;
+  background: #ecdcc9;
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.photo-display {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.photo-display img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cozy-illustration-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.polaroid-caption {
+  margin-top: 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.caption-handwritten {
+  font-size: 1.35rem;
+  color: var(--brown-deep);
+  line-height: 1.2;
+}
+
+.click-hint-badge {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--brown-terracotta);
+  background: rgba(194, 95, 83, 0.12);
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin-top: 6px;
+  letter-spacing: 0.5px;
+  animation: hintBlink 2s ease-in-out infinite;
+}
+
+@keyframes hintBlink {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 0.45; }
+}
+
+/* Polaroid Back Side */
+.polaroid-back {
+  transform: rotateY(180deg);
+  background-color: #faf6f0;
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(104, 70, 50, 0.06) 25px);
+  padding: 24px 20px;
+  justify-content: space-between;
+}
+
+.back-card-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.card-stamp-mark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.8rem;
+  opacity: 0.85;
+}
+
+.card-date {
+  font-size: 1.15rem;
+  color: var(--brown-caramel);
+  margin-bottom: 24px;
+}
+
+.typewriter-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.typewriter-text {
+  font-size: 1.7rem;
+  line-height: 1.35;
+  color: var(--brown-deep);
+  font-weight: 700;
+  min-height: 60px;
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--accent-rose);
+  animation: cursorBlink 0.7s infinite;
+  margin-left: 2px;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.back-footer-decor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(104, 70, 50, 0.2);
+}
+
+.stamp-heart {
+  font-size: 1.6rem;
+  color: var(--accent-rose);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.4s var(--ease-spring);
+}
+
+.stamp-heart.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.bear-doodle-small {
+  font-size: 1.5rem;
+}
+
+/* Scrapbook Stickers Overlapping */
+.scrapbook-sticker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  padding: 5px 12px;
+  border-radius: 16px;
+  box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(184, 123, 75, 0.2);
+  cursor: pointer;
+  position: absolute;
+  z-index: 15;
+  transition: transform var(--transition-fast);
+}
+
+.sticker-emoji {
+  font-size: 1.15rem;
+}
+
+.sticker-label {
+  font-size: 1.15rem;
+  color: var(--brown-deep);
+}
+
+.sticker-coffee {
+  bottom: 85px;
+  left: 25px;
+  transform: rotate(-7deg);
+}
+
+.sticker-hug {
+  top: 130px;
+  right: 25px;
+  transform: rotate(8deg);
+}
+
+.wiggle-hover:hover,
+.wiggle-click:hover {
+  animation: stickerWiggle 0.4s ease;
+}
+
+@keyframes stickerWiggle {
+  0%, 100% { transform: rotate(0deg) scale(1.05); }
+  25% { transform: rotate(-5deg) scale(1.08); }
+  75% { transform: rotate(5deg) scale(1.08); }
+}
+
+/* Page Navigation Area */
+.page-navigation-area {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: opacity 0.4s ease;
+}
+
+.nav-hint-text {
+  font-size: 1.25rem;
+  color: var(--brown-caramel);
+}
+
+.scrapbook-next-btn {
+  background: #fbf5ee;
+  border: 1px solid #c9aa8e;
+  border-radius: 25px;
+  padding: 10px 22px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--brown-deep);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 3px 10px rgba(45, 28, 18, 0.12);
+  transition: all var(--transition-fast);
+}
+
+.scrapbook-next-btn:hover {
+  transform: translateY(-2px);
+  background: #ffffff;
+  border-color: var(--brown-warm);
+  box-shadow: 0 6px 16px rgba(45, 28, 18, 0.2);
+}
+
+.scrapbook-next-btn .arrow-icon {
+  transition: transform var(--transition-fast);
+}
+
+.scrapbook-next-btn:hover .arrow-icon {
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   CHAPTER 2: LITTLE MEMORIES (COLLAGE & LIGHTBOX)
+   ========================================================================== */
+
+.scrapbook-collage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px 18px;
+  margin: 10px 0 25px;
+}
+
+.collage-item {
+  background: #ffffff;
+  padding: 10px 10px 18px;
+  border-radius: 3px;
+  box-shadow: 1px 4px 14px rgba(45, 28, 18, 0.14);
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease;
+  outline: none;
+}
+
+.collage-item:focus-visible {
+  box-shadow: 0 0 0 3px var(--accent-rose);
+}
+
+.collage-item:hover {
+  transform: scale(1.03) translateY(-4px) !important;
+  box-shadow: 2px 10px 22px rgba(45, 28, 18, 0.22);
+  z-index: 10;
+}
+
+/* Playful, human-made imperfect rotations */
+.collage-item-1 { transform: rotate(-2.5deg); }
+.collage-item-2 { transform: rotate(2deg); }
+.collage-item-3 { transform: rotate(1.5deg); }
+.collage-item-4 { transform: rotate(-2deg); }
+
+.tape-item {
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+  width: 65px;
+  height: 18px;
+}
+
+.collage-photo-frame {
+  width: 100%;
+  height: 160px;
+  background: #eee3d5;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.collage-caption {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 1.25rem;
+  color: var(--brown-deep);
+  line-height: 1.2;
+}
+
+.interactive-scrapbook-trinkets {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 15px 0 10px;
+  position: relative;
+}
+
+.trinket-interactive {
+  background: #fff;
+  border: 1px solid #d4beaa;
+  border-radius: 20px;
+  padding: 6px 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform var(--transition-fast);
+}
+
+.trinket-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.trinket-label {
+  font-size: 1.1rem;
+  color: var(--brown-deep);
+}
+
+/* ==========================================================================
+   CHAPTER 3: HEART COLLECTION HUNT
+   ========================================================================== */
+
+.heart-counter-card {
+  background: #fff8ee;
+  border: 1px dashed #c49a6c;
+  border-radius: 12px;
+  padding: 12px 18px;
+  margin-bottom: 24px;
+  text-align: center;
+  box-shadow: inset 0 0 10px rgba(184, 123, 75, 0.08);
+}
+
+.counter-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.counter-title {
+  font-size: 1.4rem;
+  color: var(--brown-deep);
+  font-weight: 700;
+}
+
+.counter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-rose);
+  color: #fff;
+  padding: 3px 12px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  box-shadow: 0 2px 6px rgba(194, 95, 83, 0.35);
+}
+
+.counter-hint {
+  font-size: 1.15rem;
+  color: var(--brown-warm);
+}
+
+/* Scavenger Board Elements */
+.scavenger-journal-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px 16px;
+  margin: 20px 0;
+}
+
+.board-element {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 20px 16px;
+  position: relative;
+  box-shadow: 1px 3px 10px rgba(45, 28, 18, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 140px;
+  text-align: center;
+}
+
+/* Natural Rotations */
+.board-letter { transform: rotate(-2deg); }
+.board-coffee-stain { transform: rotate(1.8deg); }
+.board-bookmark { transform: rotate(-1deg); }
+.board-bear-doodle { transform: rotate(2deg); }
+
+.mini-envelope-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.envelope-stamp {
+  font-size: 2.2rem;
+}
+
+.envelope-tag {
+  font-size: 1.25rem;
+  color: var(--brown-warm);
+}
+
+.coffee-ring {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 4px solid rgba(138, 93, 63, 0.2);
+  position: absolute;
+  top: 15px;
+  left: 30px;
+  pointer-events: none;
+}
+
+.biscuit-emoji {
+  font-size: 2.2rem;
+}
+
+.doodle-note {
+  font-size: 1.15rem;
+  color: var(--brown-warm);
+  margin-top: 4px;
+}
+
+.pressed-flower {
+  font-size: 2.2rem;
+}
+
+.bookmark-text {
+  font-size: 1.15rem;
+  color: var(--brown-warm);
+}
+
+.big-bear-emoji {
+  font-size: 2.4rem;
+}
+
+.doodle-bear-say {
+  font-size: 1.3rem;
+  color: var(--brown-deep);
+  font-weight: 700;
+  display: block;
+}
+
+/* Hidden Collectible Hearts (Naturally integrated, clearly discoverable with subtle pulse) */
+.hidden-heart-collectible {
+  position: absolute;
+  background: rgba(253, 246, 238, 0.55);
+  border: 1.5px dashed rgba(194, 95, 83, 0.45);
+  border-radius: 50%;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 25;
+  outline: none;
+  backdrop-filter: blur(1px);
+  transition: transform var(--transition-fast), background 0.25s ease, border-color 0.25s ease;
+  animation: subtleHeartGlow 2.8s ease-in-out infinite;
+}
+
+@keyframes subtleHeartGlow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(194, 95, 83, 0);
+    border-color: rgba(194, 95, 83, 0.4);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 10px rgba(194, 95, 83, 0.4);
+    border-color: rgba(194, 95, 83, 0.75);
+  }
+}
+
+.collectible-heart-icon {
+  font-size: 1.35rem;
+  color: #ba6357;
+  line-height: 1;
+  transition: all 0.3s var(--ease-spring);
+  display: block;
+}
+
+.hidden-heart-collectible:hover {
+  background: rgba(255, 245, 240, 0.95);
+  border-color: var(--accent-rose);
+  transform: scale(1.22) !important;
+  box-shadow: 0 3px 12px rgba(194, 95, 83, 0.35);
+}
+
+.hidden-heart-collectible:hover .collectible-heart-icon {
+  color: var(--accent-rose);
+  transform: scale(1.15);
+}
+
+/* Placements within the 5 items on the Chapter 3 Scavenger Board */
+/* 1. Subtly tucked on Photo 5 playful snapshot */
+.board-fun-photo .hidden-heart-collectible { 
+  top: 6px; 
+  right: 12px; 
+}
+
+/* 2. Tucked on vintage letter */
+.board-letter .hidden-heart-collectible { 
+  bottom: 8px; 
+  right: 12px; 
+}
+
+/* 3. Tucked by coffee ring & butterfly */
+.board-coffee-stain .hidden-heart-collectible { 
+  top: 8px; 
+  right: 10px; 
+}
+
+/* 4. Tucked by pressed flowers bookmark */
+.board-bookmark .hidden-heart-collectible { 
+  top: 10px; 
+  left: 10px; 
+}
+
+/* 5. Tucked by bear doodle */
+.board-bear-doodle .hidden-heart-collectible { 
+  bottom: 8px; 
+  left: 12px; 
+}
+
+/* When collected */
+.hidden-heart-collectible.collected {
+  pointer-events: none;
+  background: rgba(194, 95, 83, 0.18);
+  border-color: var(--accent-rose);
+  animation: none;
+}
+
+.hidden-heart-collectible.collected .collectible-heart-icon {
+  color: var(--accent-rose);
+  font-weight: 700;
+  animation: heartPopEffect 0.6s var(--ease-spring) forwards;
+}
+
+@keyframes heartPopEffect {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.6) rotate(15deg); }
+  100% { transform: scale(1.15); opacity: 0.9; }
+}
+
+/* Hearts Unlocked Banner */
+.hearts-unlocked-banner {
+  margin: 20px 0;
+  animation: popIn 0.5s var(--ease-spring) forwards;
+}
+
+.unlocked-card {
+  background: #fff6ee;
+  border: 2px solid var(--accent-rose);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(194, 95, 83, 0.2);
+}
+
+.unlocked-icon {
+  font-size: 2.2rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.unlocked-text {
+  font-size: 1.55rem;
+  color: var(--brown-deep);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.highlight-btn {
+  background: linear-gradient(135deg, var(--accent-rose), #9e3f34) !important;
+  color: #fff !important;
+  border-color: #7d2e24 !important;
+  font-size: 1.05rem !important;
+  padding: 12px 26px !important;
+}
+
+.subtle-nav-btn {
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+   CHAPTER 4: LITTLE THINGS I LOVE ABOUT YOU (NOTES BOARD)
+   ========================================================================== */
+
+.love-notes-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px 18px;
+  margin: 15px 0 25px;
+}
+
+.note-card {
+  background: #ffffff;
+  padding: 18px 16px 16px;
+  border-radius: 4px;
+  box-shadow: 1px 4px 12px rgba(45, 28, 18, 0.12);
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease;
+  outline: none;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.note-card:hover {
+  transform: translateY(-4px) scale(1.02) !important;
+  box-shadow: 2px 8px 18px rgba(45, 28, 18, 0.2);
+}
+
+.note-card:focus-visible {
+  box-shadow: 0 0 0 3px var(--accent-rose);
+}
+
+/* Organic rotations */
+.note-card-1 { transform: rotate(-2deg); background: #fffcf7; }
+.note-card-2 { transform: rotate(1.8deg); background: #fdfaf4; }
+.note-card-3 { transform: rotate(-1.5deg); background: #faf8f2; }
+.note-card-4 { transform: rotate(2.2deg); background: #fffbf5; }
+.note-card-5 { transform: rotate(-1.8deg); background: #fcf9f3; }
+.note-card-6 { transform: rotate(1.2deg); background: #faf7f0; }
+
+.card-nick-pill {
+  display: inline-block;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--brown-terracotta);
+  border-bottom: 1px dashed rgba(184, 123, 75, 0.4);
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+}
+
+.note-reveal-box {
+  position: relative;
+  padding: 4px 6px;
+}
+
+.note-quote-mark {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--accent-gold);
+  line-height: 0;
+  position: relative;
+  top: 8px;
+  margin-right: 2px;
+}
+
+.note-body {
+  font-size: 1.45rem;
+  line-height: 1.28;
+  color: var(--brown-deep);
+  font-weight: 600;
+  display: inline;
+}
+
+.note-heart-sparkle {
+  float: right;
+  font-size: 1.15rem;
+  color: var(--accent-rose);
+  margin-top: 6px;
+}
+
+/* ==========================================================================
+   CHAPTER 5: THE SECRET ("FOR BEAR ONLY")
+   ========================================================================== */
+
+.secret-page-paper {
+  text-align: center;
+  padding-bottom: 45px;
+}
+
+.special-photo-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0 25px;
+}
+
+.special-polaroid-frame {
+  background: #ffffff;
+  padding: 12px 12px 20px;
+  border-radius: 4px;
+  box-shadow: 2px 6px 18px rgba(45, 28, 18, 0.16);
+  max-width: 290px;
+  width: 100%;
+  transform: rotate(-1.5deg);
+  position: relative;
+}
+
+.special-photo-display {
+  width: 100%;
+  height: 200px;
+  background: #f0e2d3;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.special-caption {
+  margin-top: 10px;
+  font-size: 1.35rem;
+  color: var(--brown-deep);
+}
+
+.secret-trigger-container {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.secret-hint-text {
+  font-size: 1.35rem;
+  color: var(--brown-warm);
+}
+
+/* Wax Envelope / "For Bear Only" Button */
+.secret-wax-envelope {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: transform var(--transition-fast);
+}
+
+.secret-wax-envelope:hover {
+  transform: scale(1.05) translateY(-3px);
+}
+
+.secret-wax-envelope:focus-visible {
+  outline: 3px solid var(--accent-rose);
+  border-radius: 8px;
+}
+
+.wax-envelope-paper {
+  background: #f7ede1;
+  border: 1px solid #d4beaa;
+  border-radius: 8px;
+  padding: 22px 30px;
+  box-shadow: 0 6px 20px rgba(45, 28, 18, 0.18);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 240px;
+}
+
+.envelope-tape {
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(1deg);
+  width: 75px;
+}
+
+.wax-seal-stamp {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #d15647, #993327);
+  box-shadow: 0 3px 8px rgba(153, 51, 39, 0.45), inset 0 1px 2px rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.wax-seal-inner {
+  font-size: 1.5rem;
+}
+
+.secret-btn-label {
+  font-size: 1.65rem;
+  color: var(--brown-deep);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.secret-sub-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--brown-terracotta);
+}
+
+/* ==========================================================================
+   THE SECRET REVEAL MODAL & LETTER
+   ========================================================================== */
+
+.secret-reveal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(30, 16, 10, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.secret-reveal-overlay.open {
+  display: flex;
+  opacity: 1;
+}
+
+.secret-letter-card {
+  background: #fffcf7;
+  background-image: 
+    radial-gradient(circle at 10% 10%, rgba(184, 123, 75, 0.04) 0%, transparent 50%),
+    repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(104, 70, 50, 0.035) 28px);
+  border: 1px solid #d9c4af;
+  border-radius: 12px;
+  padding: 34px 28px 28px;
+  max-width: 520px;
+  width: 100%;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), inset 0 0 25px rgba(184, 123, 75, 0.08);
+  position: relative;
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.45s var(--ease-spring);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.secret-reveal-overlay.open .secret-letter-card {
+  transform: scale(1) translateY(0);
+}
+
+.close-secret-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(184, 123, 75, 0.15);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.1rem;
+  color: var(--brown-deep);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.close-secret-btn:hover {
+  background: var(--accent-rose);
+  color: #fff;
+}
+
+.letter-stamp-top {
+  text-align: center;
+  border-bottom: 1px dashed rgba(184, 123, 75, 0.3);
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+.letter-postmark {
+  font-size: 1.15rem;
+  color: var(--brown-terracotta);
+}
+
+.bear-love-icon-duo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.big-teddy {
+  font-size: 2.6rem;
+}
+
+.floating-red-heart {
+  font-size: 2.2rem;
+  color: var(--accent-rose);
+  animation: heartBeat 1.4s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+}
+
+.animate-bob {
+  animation: bobAnim 2.5s ease-in-out infinite alternate;
+}
+
+.animate-bob-reverse {
+  animation: bobAnim 2.5s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes bobAnim {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-8px); }
+}
+
+.secret-main-greeting {
+  font-size: 2.3rem;
+  color: var(--brown-deep);
+  text-align: center;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.secret-typewriter-box {
+  background: rgba(244, 236, 223, 0.45);
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  border-left: 3px solid var(--accent-rose);
+}
+
+.secret-message-p {
+  font-size: 1.65rem;
+  line-height: 1.45;
+  color: var(--brown-deep);
+  font-weight: 600;
+  white-space: pre-line;
+}
+
+.secret-signature {
+  text-align: right;
+  margin-top: 15px;
+  padding-right: 10px;
+}
+
+.secret-signature p {
+  font-size: 1.35rem;
+  color: var(--brown-warm);
+}
+
+.secret-signature .girlfriend-name {
+  font-size: 1.6rem;
+  color: var(--accent-rose);
+  font-weight: 700;
+}
+
+.letter-footer-confetti-btn {
+  margin-top: 22px;
+  text-align: center;
+}
+
+/* ==========================================================================
+   PHOTO LIGHTBOX MODAL
+   ========================================================================== */
+
+.photo-lightbox-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(25, 14, 8, 0.85);
+  backdrop-filter: blur(5px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.photo-lightbox-modal.open {
+  display: flex;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 440px;
+  width: 100%;
+}
+
+.lightbox-close-btn {
+  position: absolute;
+  top: -42px;
+  right: 0;
+  background: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.2rem;
+  color: var(--brown-deep);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-polaroid {
+  background: #ffffff;
+  padding: 16px 16px 26px;
+  border-radius: 4px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+  transform: rotate(-1deg);
+}
+
+.lightbox-img-container {
+  width: 100%;
+  height: 300px;
+  background: #f0e6d8;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.lightbox-img-container img,
+.lightbox-img-container svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lightbox-caption {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 1.45rem;
+  color: var(--brown-deep);
+}
+
+/* ==========================================================================
+   SCRAPBOOK TOAST NOTIFICATION
+   ========================================================================== */
+
+.scrapbook-toast {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%) translateY(40px);
+  background: #fff8ef;
+  border: 1px solid #c9aa8e;
+  color: var(--brown-deep);
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-family: var(--font-handwriting);
+  font-size: 1.35rem;
+  box-shadow: 0 6px 18px rgba(45, 28, 18, 0.25);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 5000;
+  transition: all 0.35s var(--ease-spring);
+  text-align: center;
+  max-width: 90vw;
+}
+
+.scrapbook-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   PHOTO CUSTOMIZER MODAL (EASY LOCAL UPLOAD)
+   ========================================================================== */
+
+.customizer-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(25, 14, 8, 0.8);
+  backdrop-filter: blur(5px);
+  z-index: 2500;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.customizer-modal.open {
+  display: flex;
+}
+
+.customizer-card {
+  background: #fdfaf6;
+  border: 1px solid #d9c4af;
+  border-radius: 12px;
+  padding: 28px 24px;
+  max-width: 540px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.customizer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.customizer-header h3 {
+  font-size: 1.8rem;
+  color: var(--brown-deep);
+}
+
+.customizer-close-btn {
+  background: rgba(184, 123, 75, 0.15);
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.customizer-desc {
+  font-size: 0.9rem;
+  color: var(--brown-warm);
+  line-height: 1.45;
+  margin-bottom: 20px;
+}
+
+.upload-slots-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 480px) {
+  .upload-slots-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.upload-slot {
+  background: #ffffff;
+  border: 1px dashed #cca592;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.slot-label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6px;
+}
+
+.slot-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--brown-deep);
+}
+
+.slot-tag {
+  font-size: 0.72rem;
+  color: var(--brown-terracotta);
+}
+
+.slot-file-input {
+  font-size: 0.78rem;
+  width: 100%;
+}
+
+.customizer-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.scrapbook-secondary-btn {
+  background: transparent;
+  border: 1px solid #cca592;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--brown-warm);
+  cursor: pointer;
+}
+
+.scrapbook-secondary-btn:hover {
+  background: rgba(184, 123, 75, 0.1);
+}
+
+/* ==========================================================================
+   AUTHENTIC SCRAPBOOK STICKER ASSETS & PROGRESS TAG
+   ========================================================================== */
+
+.tracker-scrapbook-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fbf5ee;
+  border: 1px solid #d4beaa;
+  padding: 4px 12px;
+  border-radius: 4px;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.18);
+  position: relative;
+  transform: rotate(-1deg);
+}
+
+.tracker-pin {
+  font-size: 0.95rem;
+  margin-right: -2px;
+}
+
+.scrapbook-sticker-asset {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: auto;
+  user-select: none;
+  filter: drop-shadow(1px 2px 4px rgba(44, 26, 16, 0.18));
+  transition: transform 0.28s var(--ease-spring);
+}
+
+.sticker-scale-xs { max-width: 34px; }
+.sticker-scale-sm { max-width: 52px; }
+.sticker-scale-md { max-width: 82px; }
+.sticker-scale-lg { max-width: 120px; }
+
+/* Chapter 0 Opening Screen Stickers */
+.opening-sticker-item {
+  position: absolute;
+  z-index: 10;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform 0.25s var(--ease-spring);
+}
+
+.opening-sticker-item:hover {
+  transform: scale(1.1) rotate(4deg);
+}
+
+.sticker-bow-pos {
+  top: 14px;
+  left: 20%;
+  transform: rotate(-8deg);
+}
+
+.sticker-stars-pos {
+  top: 25px;
+  right: 18%;
+  transform: rotate(12deg);
+}
+
+.sticker-heart-pos {
+  bottom: 30px;
+  right: 25%;
+  transform: rotate(6deg);
+}
+
+.sticker-teddy-pos {
+  bottom: 20px;
+  left: 30px;
+  transform: rotate(-6deg);
+}
+
+/* Chapter 1 Stickers around Polaroid */
+.ch1-decor-sticker {
+  position: absolute;
+  z-index: 15;
+  cursor: pointer;
+  transition: transform 0.28s var(--ease-spring);
+}
+
+.ch1-decor-sticker:hover {
+  transform: scale(1.12) !important;
+}
+
+.pos-favorite-person {
+  top: 75px;
+  right: 18px;
+  width: 145px;
+  transform: rotate(6deg);
+}
+
+.pos-red-heart {
+  top: 220px;
+  right: 24px;
+  width: 44px;
+  transform: rotate(-10deg);
+}
+
+.pos-bow {
+  top: 26px;
+  left: 28px;
+  width: 58px;
+  transform: rotate(-12deg);
+}
+
+.pos-youre-mine {
+  bottom: 85px;
+  left: 18px;
+  width: 125px;
+  transform: rotate(-5deg);
+}
+
+.pos-stars {
+  top: 175px;
+  left: 25px;
+  width: 42px;
+  transform: rotate(8deg);
+  pointer-events: none;
+}
+
+.pos-teddy {
+  bottom: 150px;
+  right: 20px;
+  width: 65px;
+  transform: rotate(8deg);
+}
+
+.inline-sticker-stamp {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* ==========================================================================
+   CHAPTER 2: ASYMMETRIC ORGANIC SCRAPBOOK COLLAGE
+/* ==========================================================================
+   CHAPTER 2: ASYMMETRIC ORGANIC SCRAPBOOK COLLAGE (PHOTOS 2, 3, 4)
+   ========================================================================== */
+
+.polaroid-real-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 2px;
+  transition: transform 0.4s ease;
+}
+
+.scrapbook-asymmetric-layout {
+  position: relative;
+  min-height: 580px;
+  margin: 15px 0 30px;
+  width: 100%;
+}
+
+.scrapbook-photo-item {
+  background: #ffffff;
+  padding: 10px 10px 16px;
+  border-radius: 3px;
+  box-shadow: 2px 6px 18px rgba(45, 28, 18, 0.16);
+  cursor: pointer;
+  position: absolute;
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease, z-index 0.1s;
+}
+
+.scrapbook-photo-item:hover {
+  transform: scale(1.03) translateY(-6px) !important;
+  box-shadow: 4px 14px 28px rgba(45, 28, 18, 0.26);
+  z-index: 25 !important;
+}
+
+/* PHOTO 3: Couple Portrait (Larger than Photo 2, with torn paper & flower/bow/stars) */
+.photo-couple-portrait {
+  top: 10px;
+  left: 15px;
+  width: 275px;
+  transform: rotate(-2.5deg);
+  z-index: 6;
+}
+
+.photo-couple-portrait .collage-photo-frame {
+  height: 185px;
+  position: relative;
+}
+
+.torn-paper-edge {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: repeating-linear-gradient(-45deg, transparent, transparent 4px, rgba(210, 180, 150, 0.25) 4px, rgba(210, 180, 150, 0.25) 8px);
+  pointer-events: none;
+}
+
+.photo-decor-stickers {
+  position: relative;
+  height: 0;
+  pointer-events: none;
+}
+
+.photo-mini-sticker {
+  position: absolute;
+  z-index: 10;
+  filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.15));
+}
+
+.mini-flower {
+  bottom: 8px;
+  right: -12px;
+  width: 42px;
+  transform: rotate(15deg);
+}
+
+.mini-bow {
+  top: -195px;
+  right: -8px;
+  width: 38px;
+  transform: rotate(-10deg);
+}
+
+.mini-stars {
+  top: -175px;
+  left: -10px;
+  width: 30px;
+  transform: rotate(8deg);
+}
+
+/* PHOTO 2: Small Intimate Scrapbook Photograph (Tucked & partially overlapping) */
+.photo-intimate-closeup {
+  top: 25px;
+  right: 25px;
+  width: 195px;
+  transform: rotate(4.5deg);
+  z-index: 9;
+  background: #fffdfa;
+  border: 1px solid rgba(200, 170, 140, 0.35);
+  box-shadow: 3px 8px 20px rgba(45, 28, 18, 0.22);
+}
+
+.photo-intimate-closeup .collage-photo-frame {
+  height: 140px;
+}
+
+.mini-bow-c2 {
+  top: -145px;
+  left: -12px;
+  width: 30px;
+  transform: rotate(-15deg);
+}
+
+.mini-heart-c2 {
+  bottom: 12px;
+  right: -8px;
+  width: 24px;
+  transform: rotate(12deg);
+}
+
+.tucked-label-badge {
+  font-family: var(--font-handwriting);
+  font-size: 0.85rem;
+  color: var(--accent-rose);
+  text-align: center;
+  margin-top: 2px;
+  opacity: 0.85;
+}
+
+/* PHOTO 4: Vintage Black & White Memory (Old printed photograph, worn border, handwritten note) */
+.photo-bw-memory {
+  top: 280px;
+  left: 70px;
+  width: 245px;
+  transform: rotate(-1.5deg);
+  z-index: 8;
+  background: #fbf8f2;
+}
+
+.worn-paper-border {
+  padding: 5px;
+  background: #fdfaf5;
+  border: 1px solid #dcd1c2;
+  box-shadow: inset 0 0 6px rgba(110, 80, 50, 0.12);
+  border-radius: 2px;
+}
+
+.photo-bw-memory .collage-photo-frame {
+  height: 165px;
+}
+
+.bw-photo {
+  filter: contrast(1.06) brightness(0.98);
+}
+
+.handwritten-taped-note {
+  font-size: 1.05rem;
+  color: var(--brown-terracotta);
+  text-align: center;
+  margin-top: 6px;
+  padding: 3px 8px;
+  background: rgba(244, 236, 223, 0.65);
+  border-radius: 3px;
+  border-left: 2px solid var(--accent-rose);
+}
+
+.tape-long {
+  width: 85px;
+  top: -10px;
+}
+
+/* Overlapping Decorative Stickers on Chapter 2 */
+.ch2-sticker-decor {
+  position: absolute;
+  z-index: 12;
+  cursor: pointer;
+}
+
+.ch2-sticker-decor:hover {
+  transform: scale(1.12);
+}
+
+.sticker-cam-overlap {
+  top: 170px;
+  left: 8px;
+  width: 78px;
+  transform: rotate(10deg);
+}
+
+.sticker-flower-overlap {
+  top: 150px;
+  right: 18px;
+  width: 65px;
+  transform: rotate(-12deg);
+}
+
+.sticker-cat-overlap {
+  bottom: 12px;
+  left: 60px;
+  width: 85px;
+  transform: rotate(4deg);
+}
+
+.sticker-ribbon-overlap {
+  bottom: 50px;
+  right: 180px;
+  width: 130px;
+  transform: rotate(-3deg);
+  pointer-events: none;
+}
+
+/* Interactive Envelope in Chapter 2 */
+.ch2-interactive-envelope {
+  position: absolute;
+  bottom: 10px;
+  right: 30px;
+  width: 86px;
+  z-index: 15;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.28s var(--ease-spring);
+}
+
+.ch2-interactive-envelope:hover {
+  transform: scale(1.1) rotate(-3deg);
+}
+
+.envelope-peek-label {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--brown-deep);
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+.ch2-interactive-bow {
+  position: absolute;
+  top: 215px;
+  right: 240px;
+  z-index: 14;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.ch2-interactive-bow img {
+  width: 44px;
+}
+
+.ch2-interactive-bow .trinket-label {
+  font-size: 0.85rem;
+  color: var(--brown-warm);
+}
+
+.heart-pos-ch2 {
+  position: absolute;
+  bottom: 110px;
+  left: 145px;
+  z-index: 20;
+}
+
+/* ==========================================================================
+   CHAPTER 4: FOLDED INTERACTIVE NOTES
+   ========================================================================== */
+
+.love-notes-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px 18px;
+  margin: 18px 0 25px;
+}
+
+.note-card-interactive {
+  background: #ffffff;
+  border-radius: 4px;
+  padding: 16px 14px 18px;
+  box-shadow: 1px 4px 14px rgba(45, 28, 18, 0.12);
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease;
+  outline: none;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.note-card-interactive:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 2px 10px 22px rgba(45, 28, 18, 0.2);
+}
+
+.note-card-1 { transform: rotate(-1.5deg); }
+.note-card-2 { transform: rotate(2deg); }
+.note-card-3 { transform: rotate(-2deg); }
+.note-card-4 { transform: rotate(1deg); }
+.note-card-5 { transform: rotate(-1deg); }
+.note-card-6 { transform: rotate(2.5deg); }
+
+.note-teaser {
+  text-align: center;
+  transition: opacity 0.3s ease;
+}
+
+.teaser-tag {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--brown-deep);
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+
+.teaser-hint {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  color: var(--brown-terracotta);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.note-revealed-paper {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: rotateX(-35deg);
+  transform-origin: top center;
+  transition: max-height 0.45s ease, opacity 0.35s ease, transform 0.4s var(--ease-spring);
+  text-align: center;
+}
+
+.note-card-interactive.note-unfolded .note-teaser {
+  opacity: 0.5;
+  margin-bottom: 8px;
+}
+
+.note-card-interactive.note-unfolded .teaser-hint {
+  display: none;
+}
+
+.note-card-interactive.note-unfolded .note-revealed-paper {
+  max-height: 180px;
+  opacity: 1;
+  transform: rotateX(0deg);
+  border-top: 1px dashed rgba(184, 123, 75, 0.35);
+  padding-top: 10px;
+}
+
+.inline-note-heart {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  margin-top: 6px;
+}
+
+.special-personal-note {
+  border: 1px solid rgba(194, 95, 83, 0.35);
+  background: #fdfaf6;
+}
+
+.ch4-decorations-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+
+.ch4-sticker {
+  cursor: pointer;
+  transition: transform 0.28s var(--ease-spring);
+}
+
+.ch4-sticker:hover {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.sticker-ily { width: 110px; }
+.sticker-mylove { width: 60px; }
+.sticker-lips { width: 55px; }
+.sticker-flowers { width: 50px; }
+.sticker-rheart { width: 38px; }
+
+/* Chapter 5 & Secret Reveal Enhancements */
+.secret-pin-bow {
+  width: 36px;
+  position: absolute;
+  top: -12px;
+  right: -8px;
+  transform: rotate(15deg);
+}
+
+.secret-decor-cluster {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.final-decor {
+  filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.15));
+}
+
+.final-bow { width: 44px; }
+.final-teddy { width: 55px; }
+.final-heart { width: 32px; }
+.final-flowers { width: 40px; }
+.final-stars { width: 32px; }
+
+/* Mini Letter Modal from Chapter 2 */
+.mini-letter-card {
+  max-width: 360px;
+  padding: 24px 20px;
+  text-align: center;
+}
+
+.mini-envelope-bear {
+  width: 50px;
+  margin: 0 auto 8px;
+  display: block;
+}
+
+.mini-letter-heading {
+  font-size: 1.6rem;
+  color: var(--accent-rose);
+  margin-bottom: 8px;
+}
+
+.mini-letter-body {
+  font-size: 1.35rem;
+  color: var(--brown-deep);
+  line-height: 1.35;
+  margin-bottom: 12px;
+}
+
+.mini-letter-sign {
+  font-size: 1.2rem;
+  color: var(--brown-warm);
+}
+
+/* PHOTO 5: Fun Couple Playful Snapshot (Chapter 3) */
+.board-fun-photo {
+  background: #ffffff;
+  padding: 10px 10px 18px;
+  border-radius: 4px;
+  box-shadow: 2px 8px 24px rgba(45, 28, 18, 0.16);
+  transform: rotate(-2.5deg);
+  max-width: 290px;
+  width: 100%;
+  margin: 10px auto 20px;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.3s ease;
+}
+
+.board-fun-photo:hover {
+  transform: rotate(-1deg) scale(1.03) translateY(-4px);
+  box-shadow: 4px 14px 30px rgba(45, 28, 18, 0.24);
+}
+
+.playful-snapshot-frame {
+  height: 185px;
+  overflow: hidden;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.playful-decorations {
+  position: relative;
+  height: 0;
+  pointer-events: none;
+}
+
+.playful-sticker {
+  position: absolute;
+  filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.16));
+}
+
+.sticker-playful-stars {
+  top: -180px;
+  right: -12px;
+  width: 34px;
+  transform: rotate(15deg);
+}
+
+.sticker-playful-bow {
+  top: -195px;
+  left: -10px;
+  width: 36px;
+  transform: rotate(-12deg);
+}
+
+.sticker-playful-heart {
+  bottom: 8px;
+  right: -8px;
+  width: 26px;
+  transform: rotate(10deg);
+}
+
+.sticker-playful-cam {
+  bottom: 6px;
+  left: -14px;
+  width: 44px;
+  transform: rotate(-8deg);
+}
+
+.playful-caption {
+  font-size: 1.3rem;
+  color: var(--brown-deep);
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* PHOTO 6: Outdoor Couple Photo (Chapter 4) — Landscape Scrapbook Print */
+.outdoor-photo-scrapbook-card {
+  background: #fdfaf3;
+  border: 1px solid #e3d5c1;
+  padding: 13px 13px 16px;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(45, 28, 18, 0.08), 0 10px 26px rgba(45, 28, 18, 0.15);
+  transform: rotate(-0.8deg);
+  width: 60%;
+  max-width: 540px;
+  min-width: 320px;
+  margin: 22px auto 30px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.25, 1), box-shadow 0.35s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.outdoor-photo-scrapbook-card:hover {
+  transform: translateY(-5px) scale(1.02) rotate(0deg);
+  box-shadow: 0 8px 18px rgba(45, 28, 18, 0.12), 0 18px 36px rgba(45, 28, 18, 0.22);
+}
+
+.outdoor-photo-scrapbook-card.photo-lifted {
+  transform: translateY(-10px) scale(1.03) rotate(0deg) !important;
+  box-shadow: 0 14px 28px rgba(45, 28, 18, 0.14), 0 24px 48px rgba(45, 28, 18, 0.28) !important;
+  z-index: 25;
+}
+
+.outdoor-top-tape {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(0.6deg);
+  width: 90px;
+  height: 24px;
+  z-index: 8;
+  opacity: 0.92;
+  box-shadow: 0 2px 5px rgba(45, 28, 18, 0.1);
+}
+
+.outdoor-frame-border {
+  padding: 5px;
+  background: #ffffff;
+  border: 1px solid #ebdccb;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 3px rgba(45, 28, 18, 0.05);
+}
+
+.outdoor-photo-container {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  overflow: hidden;
+  border-radius: 2px;
+  position: relative;
+  background: #ede4d6;
+}
+
+.outdoor-photo-container .photo-display {
+  width: 100%;
+  height: 100%;
+}
+
+.outdoor-photo-container img.polaroid-real-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 32%;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+  filter: contrast(1.02) saturate(1.03);
+  transition: transform 0.4s ease;
+}
+
+.outdoor-photo-scrapbook-card:hover .polaroid-real-img {
+  transform: scale(1.015);
+}
+
+.outdoor-clean-decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.outdoor-mini-flower {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 40px;
+  transform: rotate(14deg);
+  filter: drop-shadow(1px 2px 4px rgba(45, 28, 18, 0.2));
+  z-index: 9;
+}
+
+.outdoor-mini-stars {
+  position: absolute;
+  bottom: 8px;
+  left: -10px;
+  width: 30px;
+  transform: rotate(-10deg);
+  filter: drop-shadow(1px 2px 3px rgba(45, 28, 18, 0.18));
+  z-index: 9;
+}
+
+.outdoor-caption {
+  font-family: var(--font-handwriting);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--brown-deep, #3d271d);
+  text-align: center;
+  margin-top: 12px;
+  margin-bottom: 0;
+  letter-spacing: 0.3px;
+}
+
+.outdoor-tucked-note {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.35s ease, margin-top 0.35s ease;
+  font-family: var(--font-handwriting);
+  font-size: 1.15rem;
+  color: #b34a42;
+  text-align: center;
+  padding: 0 8px;
+}
+
+.outdoor-photo-scrapbook-card.photo-lifted .outdoor-tucked-note {
+  max-height: 60px;
+  opacity: 1;
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px dashed rgba(184, 123, 75, 0.35);
+}
+
+/* PHOTO 7: His Solo Photo ("Bear") (Chapter 5) */
+.special-photo-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto 25px;
+}
+
+.special-polaroid-frame {
+  background: #ffffff;
+  padding: 14px 14px 22px;
+  border-radius: 4px;
+  box-shadow: 2px 10px 28px rgba(45, 28, 18, 0.22);
+  transform: rotate(-2deg);
+  max-width: 310px;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.3s ease;
+}
+
+.special-polaroid-frame:hover {
+  transform: rotate(-0.5deg) scale(1.03) translateY(-4px);
+  box-shadow: 4px 16px 36px rgba(45, 28, 18, 0.3);
+}
+
+.special-photo-display {
+  height: 235px;
+  overflow: hidden;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.bear-solo-decor {
+  position: relative;
+  height: 0;
+  pointer-events: none;
+}
+
+.bear-solo-teddy {
+  position: absolute;
+  top: -240px;
+  right: -14px;
+  width: 48px;
+  transform: rotate(10deg);
+  filter: drop-shadow(1px 2px 4px rgba(0, 0, 0, 0.18));
+}
+
+.bear-solo-heart {
+  position: absolute;
+  bottom: 12px;
+  left: -8px;
+  width: 24px;
+  transform: rotate(-10deg);
+  filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.15));
+}
+
+.special-caption {
+  font-size: 1.45rem;
+  color: var(--brown-deep);
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* ==========================================================================
+   MOBILE & RESPONSIVE REFINEMENTS
+   ========================================================================== */
+
+@media (max-width: 650px) {
+  .scrapbook-top-bar {
+    padding: 8px 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .scrapbook-pin-btn {
+    padding: 5px 9px;
+    font-size: 0.78rem;
+  }
+
+  .tracker-scrapbook-tag {
+    padding: 3px 8px;
+  }
+
+  .desk-container {
+    padding: 12px 8px 30px;
+  }
+
+  .page-paper {
+    padding: 24px 12px 20px;
+    border-radius: 6px;
+  }
+
+  .chapter-title-script {
+    font-size: 1.5rem;
+  }
+
+  .cover-title {
+    font-size: 2.2rem;
+  }
+
+  .cover-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .peeking-polaroid {
+    display: none;
+  }
+
+  .polaroid-scene {
+    margin: 15px auto 40px;
+    max-width: 290px;
+  }
+
+  .polaroid-card {
+    height: 375px;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .polaroid-photo-box {
+    height: 215px;
+  }
+
+  /* Mobile Chapter 1 Sticker Positioning */
+  .pos-favorite-person {
+    top: auto;
+    bottom: -18px;
+    right: 6px;
+    width: 115px;
+    transform: rotate(3deg);
+  }
+
+  .pos-bow {
+    top: -6px;
+    left: 12px;
+    width: 38px;
+  }
+
+  .pos-youre-mine {
+    top: 15px;
+    left: 4px;
+    width: 95px;
+    bottom: auto;
+    transform: rotate(-6deg);
+  }
+
+  .pos-teddy {
+    top: 10px;
+    right: 8px;
+    width: 44px;
+  }
+
+  .pos-stars, .pos-red-heart {
+    display: none;
+  }
+
+  .page-navigation-area {
+    margin-top: 30px;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 30;
+  }
+
+  /* Mobile Chapter 2 Asymmetric Layout: Reposition organically in single column */
+  .scrapbook-asymmetric-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    min-height: auto;
+    margin: 15px 0 25px;
+  }
+
+  .scrapbook-photo-item {
+    position: static !important;
+    width: 100% !important;
+    max-width: 290px;
+  }
+
+  .photo-couple-portrait { transform: rotate(-1.5deg) !important; width: 100% !important; max-width: 290px; }
+  .photo-intimate-closeup { transform: rotate(2deg) !important; width: 100% !important; max-width: 220px; }
+  .photo-bw-memory { transform: rotate(-1deg) !important; width: 100% !important; max-width: 280px; }
+
+  .board-fun-photo {
+    max-width: 280px;
+    margin: 10px auto;
+  }
+
+  .outdoor-photo-scrapbook-card {
+    width: 90% !important;
+    max-width: 92% !important;
+    margin: 16px auto 22px !important;
+    padding: 10px 10px 14px !important;
+  }
+
+  .outdoor-caption {
+    font-size: 1.25rem !important;
+    margin-top: 8px !important;
+  }
+
+  .special-polaroid-frame {
+    max-width: 280px;
+    margin: 10px auto 20px;
+  }
+
+  .ch2-sticker-decor, .ch2-interactive-envelope, .ch2-interactive-bow, .heart-pos-ch2 {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+
+  .sticker-ribbon-overlap {
+    display: none;
+  }
+
+  .love-notes-board {
+    grid-template-columns: 1fr;
+  }
+
+  .note-body {
+    font-size: 1.35rem;
+  }
+
+  .secret-main-greeting {
+    font-size: 1.75rem;
+  }
+
+  .secret-message-p {
+    font-size: 1.35rem;
+  }
+
+  .secret-letter-card {
+    padding: 24px 16px 20px;
+    max-height: 88vh;
+  }
+}
+

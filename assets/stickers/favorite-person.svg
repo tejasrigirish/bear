@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 54" width="100%" height="100%">
+  <defs>
+    <filter id="fp-shadow" x="-10%" y="-15%" width="125%" height="140%">
+      <feDropShadow dx="1" dy="2.5" stdDeviation="2" flood-color="#2c1a10" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <g filter="url(#fp-shadow)">
+    <!-- Die cut white border -->
+    <rect x="2" y="2" width="166" height="50" rx="12" fill="#ffffff" stroke="#f4ede2" stroke-width="3"/>
+    <!-- Kraft/Beige Washi Label Inner -->
+    <rect x="6" y="6" width="158" height="42" rx="9" fill="#ecdcc7"/>
+    <!-- Stitched Dashed Border -->
+    <rect x="9" y="9" width="152" height="36" rx="7" fill="none" stroke="#b08d6d" stroke-width="1.2" stroke-dasharray="3 2"/>
+    <!-- Tiny Red Heart Badge -->
+    <path d="M25 24 Q22 20 18 23 Q14 27 25 36 Q36 27 32 23 Q28 20 25 24 Z" fill="#b84537"/>
+    <!-- Text: Favorite person -->
+    <text x="36" y="32" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="15.5" fill="#3d271d" letter-spacing="0.8">favorite person</text>
+    <!-- Tiny Sparkles -->
+    <path d="M152 18 L153.5 21.5 L157 23 L153.5 24.5 L152 28 L150.5 24.5 L147 23 L150.5 21.5 Z" fill="#d99c43"/>
+    <circle cx="152" cy="34" r="1.5" fill="#b08d6d"/>
+  </g>
+</svg>
