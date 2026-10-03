@@ -2,3 +2,5 @@ node_modules/
 .chrome-profile/
 .DS_Store
 Thumbs.db
+cloudflared.exe
+
